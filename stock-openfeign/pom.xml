@@ -7,11 +7,12 @@
         <groupId>com.data.stock</groupId>
         <artifactId>stock</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
-
     <groupId>com.data.stockopenfeign</groupId>
+    <name>stock-openfeign</name>
     <artifactId>stock-openfeign</artifactId>
-
+    <packaging>jar</packaging>
     <dependencies>
 
         <dependency>
