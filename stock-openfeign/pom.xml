@@ -9,18 +9,20 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.data.stocktask</groupId>
-    <artifactId>stock-task</artifactId>
+    <groupId>com.data.stockopenfeign</groupId>
+    <artifactId>stock-openfeign</artifactId>
 
     <dependencies>
-        <dependency>
-            <groupId>com.data.stockopenfeign</groupId>
-            <artifactId>stock-openfeign</artifactId>
-        </dependency>
 
         <dependency>
-            <groupId>com.data.stockdata</groupId>
-            <artifactId>stock-data</artifactId>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.7.19</version>
+        </dependency>
+        <dependency>
+            <groupId>com.data.stockcommon</groupId>
+            <artifactId>stock-common</artifactId>
         </dependency>
     </dependencies>
+
 </project>

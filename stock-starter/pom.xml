@@ -9,18 +9,20 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.data.stocktask</groupId>
-    <artifactId>stock-task</artifactId>
+    <artifactId>stock-starter</artifactId>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>com.data.stockopenfeign</groupId>
-            <artifactId>stock-openfeign</artifactId>
-        </dependency>
 
         <dependency>
-            <groupId>com.data.stockdata</groupId>
-            <artifactId>stock-data</artifactId>
+            <groupId>com.data.stockweb</groupId>
+            <artifactId>stock-web</artifactId>
         </dependency>
     </dependencies>
+
 </project>
