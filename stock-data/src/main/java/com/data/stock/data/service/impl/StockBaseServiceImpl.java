@@ -19,7 +19,7 @@ public class StockBaseServiceImpl extends ServiceImpl<StockBaseMapper, StockBase
 
     @Override
     public void replaceInto(List<StockBase> stockBaseList) {
-
+        this.baseMapper.replaceInto(stockBaseList);
     }
 }
 

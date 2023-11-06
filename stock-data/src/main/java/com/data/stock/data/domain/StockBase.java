@@ -14,11 +14,6 @@ import lombok.Data;
 @TableName(value ="stock_base")
 @Data
 public class StockBase implements Serializable {
-    /**
-     * 主键id
-     */
-    @TableId(type = IdType.AUTO)
-    private Long id;
 
     /**
      * 自定义编码
@@ -33,6 +28,7 @@ public class StockBase implements Serializable {
     /**
      * 股票代码
      */
+    @TableId()
     private String stockCode;
 
     /**

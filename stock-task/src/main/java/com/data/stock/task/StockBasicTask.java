@@ -1,5 +1,11 @@
 package com.data.stock.task;
 
+import com.data.stock.data.domain.StockBase;
+import com.data.stock.data.service.StockBaseService;
+import com.data.stock.openfeign.tushare.BasicDataService;
+import com.data.stock.openfeign.tushare.TuShareStockBasicPageDTO;
+import com.data.stock.openfeign.tushare.domain.TuShareStockBasicDTO;
+import com.data.stock.openfeign.tushare.domain.TuShareStockBasicQueryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -29,7 +35,7 @@ public class StockBasicTask implements StockTask{
     @Autowired
     private StockBaseService service;
 
-    @Scheduled
+//    @Scheduled
     public void execute() {
 
         List<TuShareStockBasicDTO> tuShareStockBasics = new ArrayList<>();
@@ -63,7 +69,7 @@ public class StockBasicTask implements StockTask{
                 stockBase.setIsHs(basic.getIs_hs());
                 return stockBase;
             }).collect(Collectors.toList());
-            service.replaceInto(stockBaseList);
+            service.saveOrUpdateBatch(stockBaseList);
         }
     }
 }
