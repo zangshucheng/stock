@@ -37,6 +37,7 @@
             <artifactId>slf4j-log4j12</artifactId>
             <version>1.7.36</version>
         </dependency>
+
     </dependencies>
 
     <dependencyManagement>
@@ -62,6 +63,12 @@
             <dependency>
                 <groupId>com.data.stock</groupId>
                 <artifactId>stock-data</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.data.stock</groupId>
+                <artifactId>stock-task</artifactId>
                 <version>${project.version}</version>
             </dependency>
         </dependencies>

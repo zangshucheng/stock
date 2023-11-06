@@ -6,6 +6,7 @@
         <groupId>com.data.stock</groupId>
         <artifactId>stock</artifactId>
         <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>stock-web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
@@ -22,7 +23,6 @@
         <dependency>
             <groupId>com.data.stock</groupId>
             <artifactId>stock-task</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>

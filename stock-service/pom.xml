@@ -6,6 +6,7 @@
 		<groupId>com.data.stock</groupId>
 		<artifactId>stock</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>stock-service</artifactId>
 	<version>0.0.1-SNAPSHOT</version>

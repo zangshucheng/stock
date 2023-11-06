@@ -13,6 +13,7 @@
     <artifactId>stock-data</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>stock-data</name>
+    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
