@@ -5,11 +5,10 @@
     <parent>
         <groupId>com.data.stock</groupId>
         <artifactId>stock</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <artifactId>stock-web</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>stock-web</name>
     <description>stock-web</description>
 

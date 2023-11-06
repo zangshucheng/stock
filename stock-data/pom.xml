@@ -6,12 +6,11 @@
     <parent>
         <groupId>com.data.stock</groupId>
         <artifactId>stock</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
     <artifactId>stock-data</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
     <name>stock-data</name>
     <packaging>jar</packaging>
 
