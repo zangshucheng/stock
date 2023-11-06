@@ -10,7 +10,6 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
 
-    <groupId>com.data.stockcommon</groupId>
     <name>stock-common</name>
     <artifactId>stock-common</artifactId>
     <packaging>jar</packaging>

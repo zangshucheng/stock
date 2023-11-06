@@ -9,17 +9,16 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>com.data.stocktask</groupId>
     <artifactId>stock-task</artifactId>
     <name>stock-task</name>
     <dependencies>
         <dependency>
-            <groupId>com.data.stockopenfeign</groupId>
+            <groupId>com.data.stock</groupId>
             <artifactId>stock-openfeign</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>com.data.stockdata</groupId>
+            <groupId>com.data.stock</groupId>
             <artifactId>stock-data</artifactId>
         </dependency>
     </dependencies>

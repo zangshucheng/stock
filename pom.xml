@@ -42,25 +42,25 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>com.data.stockweb</groupId>
+                <groupId>com.data.stock</groupId>
                 <artifactId>stock-web</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>com.data.stockcommon</groupId>
+                <groupId>com.data.stock</groupId>
                 <artifactId>stock-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>com.data.stockopenfeign</groupId>
+                <groupId>com.data.stock</groupId>
                 <artifactId>stock-openfeign</artifactId>
                 <version>${project.version}</version>
             </dependency>
 
             <dependency>
-                <groupId>com.data.stockdata</groupId>
+                <groupId>com.data.stock</groupId>
                 <artifactId>stock-data</artifactId>
                 <version>${project.version}</version>
             </dependency>

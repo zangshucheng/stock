@@ -7,7 +7,6 @@
         <artifactId>stock</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <groupId>com.data.stockweb</groupId>
     <artifactId>stock-web</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>stock-web</name>
@@ -21,7 +20,7 @@
             <version>2.3.2.RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>com.data.stocktask</groupId>
+            <groupId>com.data.stock</groupId>
             <artifactId>stock-task</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>

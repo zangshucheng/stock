@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.data.stockdata.mapper.StockBaseMapper">
+<mapper namespace="com.data.stock.data.mapper.StockBaseMapper">
 
-    <resultMap id="BaseResultMap" type="com.data.stockdata.domain.StockBase">
+    <resultMap id="BaseResultMap" type="com.data.stock.data.domain.StockBase">
         <id property="id" column="id" jdbcType="BIGINT"/>
         <result property="tsCode" column="ts_code" jdbcType="VARCHAR"/>
         <result property="stockName" column="stock_name" jdbcType="VARCHAR"/>

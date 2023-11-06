@@ -10,13 +10,11 @@
     </parent>
 
     <artifactId>stock-starter</artifactId>
-    <groupId>com.data.stockstarter</groupId>
-
 
     <dependencies>
 
         <dependency>
-            <groupId>com.data.stockweb</groupId>
+            <groupId>com.data.stock</groupId>
             <artifactId>stock-web</artifactId>
         </dependency>
     </dependencies>
