@@ -3,11 +3,10 @@ package com.data.stock.task;
 import com.data.stock.data.domain.StockBase;
 import com.data.stock.data.service.StockBaseService;
 import com.data.stock.openfeign.tushare.BasicDataService;
-import com.data.stock.openfeign.tushare.TuShareStockBasicPageDTO;
-import com.data.stock.openfeign.tushare.domain.TuShareStockBasicDTO;
-import com.data.stock.openfeign.tushare.domain.TuShareStockBasicQueryDTO;
+import com.data.stock.openfeign.tushare.domain.StockBasicPageDTO;
+import com.data.stock.openfeign.tushare.domain.StockBasicDTO;
+import com.data.stock.openfeign.tushare.domain.StockBasicQueryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
@@ -38,12 +37,12 @@ public class StockBasicTask implements StockTask{
 //    @Scheduled
     public void execute() {
 
-        List<TuShareStockBasicDTO> tuShareStockBasics = new ArrayList<>();
+        List<StockBasicDTO> tuShareStockBasics = new ArrayList<>();
         int offset = STOCK_BASIC_OFFSET_START;
-        TuShareStockBasicPageDTO tuShareStockBasicPageDTO = null;
+        StockBasicPageDTO tuShareStockBasicPageDTO = null;
         do {
             //取数据
-            tuShareStockBasicPageDTO = basicDataService.stockBasic(new TuShareStockBasicQueryDTO(STOCK_BASIC_LIMIT, offset));
+            tuShareStockBasicPageDTO = basicDataService.stockBasic(new StockBasicQueryDTO(STOCK_BASIC_LIMIT, offset));
 
             if(Objects.isNull(tuShareStockBasicPageDTO) || CollectionUtils.isEmpty(tuShareStockBasicPageDTO.getTuShareStockBasics())){
                 break;

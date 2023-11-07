@@ -2,11 +2,13 @@ package com.data.stock.openfeign.tushare.domain;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 参考文档 https://tushare.pro/document/2?doc_id=25
  */
 @Data
-public class TuShareStockBasicDTO {
+public class StockBasicDTO implements Serializable {
     /**
      * TS股票代码
      * 默认显示：Y

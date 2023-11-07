@@ -2,6 +2,7 @@ package com.data.stock.openfeign.tushare.domain;
 
 import lombok.Data;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,7 +10,13 @@ import java.util.List;
  * 参考文档 https://tushare.pro/document/2?doc_id=25
  */
 @Data
-public class TuShareStockBasicRequestDTO {
+public class StockBasicRequestDTO<T> implements Serializable {
+
+    public StockBasicRequestDTO(){}
+
+    public StockBasicRequestDTO(List<String> fields){
+        this.fields = fields;
+    }
 
     /**
      * 接口名称
@@ -19,7 +26,7 @@ public class TuShareStockBasicRequestDTO {
     /**
      * 查询参数
      */
-    private TuShareStockBasicQueryDTO params;
+    private T params;
 
     /**
      * 查询字段；

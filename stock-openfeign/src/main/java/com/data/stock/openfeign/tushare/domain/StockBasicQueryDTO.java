@@ -2,17 +2,19 @@ package com.data.stock.openfeign.tushare.domain;
 
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 参考文档 https://tushare.pro/document/2?doc_id=25
  */
 @Data
-public class TuShareStockBasicQueryDTO {
+public class StockBasicQueryDTO extends BasePageDTO implements Serializable {
 
-    public TuShareStockBasicQueryDTO(){
+    public StockBasicQueryDTO(){
 
     }
 
-    public TuShareStockBasicQueryDTO(int limit, int offset){
+    public StockBasicQueryDTO(int limit, int offset){
         this.limit = limit;
         this.offset = offset;
     }
@@ -51,14 +53,4 @@ public class TuShareStockBasicQueryDTO {
      * 必填：N
      */
     private String s_hs;
-
-    /**
-     * 单次返回数据长度
-     */
-    private  int limit;
-
-    /**
-     * 请求数据的开始位移量
-     */
-    private int offset;
 }
