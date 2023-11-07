@@ -1,11 +1,14 @@
 package com.data.stock.task;
 
+import com.data.stock.common.constant.MagicNumberConstants;
+import com.data.stock.common.utils.DateUtil;
 import com.data.stock.data.domain.StockBase;
 import com.data.stock.data.service.StockBaseService;
 import com.data.stock.openfeign.tushare.BasicDataService;
 import com.data.stock.openfeign.tushare.domain.StockBasicPageDTO;
 import com.data.stock.openfeign.tushare.domain.StockBasicDTO;
 import com.data.stock.openfeign.tushare.domain.StockBasicQueryDTO;
+import com.data.stock.openfeign.tushare.domain.TradeCalendarQueryDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -15,18 +18,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-@Component
+//@Component
 public class StockBasicTask implements StockTask{
-
-    /**
-     * 每次取数据的条数
-     */
-    public static final int STOCK_BASIC_LIMIT = 10000;
-
-    /**
-     * 其实查询位置
-     */
-    public static final int STOCK_BASIC_OFFSET_START = 0;
 
     @Autowired
     private BasicDataService basicDataService;
@@ -36,19 +29,18 @@ public class StockBasicTask implements StockTask{
 
 //    @Scheduled
     public void execute() {
-
         List<StockBasicDTO> tuShareStockBasics = new ArrayList<>();
-        int offset = STOCK_BASIC_OFFSET_START;
+        int offset = MagicNumberConstants.STOCK_BASIC_OFFSET_START;
         StockBasicPageDTO tuShareStockBasicPageDTO = null;
         do {
             //取数据
-            tuShareStockBasicPageDTO = basicDataService.stockBasic(new StockBasicQueryDTO(STOCK_BASIC_LIMIT, offset));
+            tuShareStockBasicPageDTO = basicDataService.stockBasic(new StockBasicQueryDTO(MagicNumberConstants.STOCK_BASIC_LIMIT, offset));
 
             if(Objects.isNull(tuShareStockBasicPageDTO) || CollectionUtils.isEmpty(tuShareStockBasicPageDTO.getTuShareStockBasics())){
                 break;
             }
             tuShareStockBasics.addAll(tuShareStockBasicPageDTO.getTuShareStockBasics());
-            offset += STOCK_BASIC_LIMIT;
+            offset += MagicNumberConstants.STOCK_BASIC_LIMIT;
         }while (!Objects.isNull(tuShareStockBasicPageDTO) && tuShareStockBasicPageDTO.isHas_more());
 
         //数据插入

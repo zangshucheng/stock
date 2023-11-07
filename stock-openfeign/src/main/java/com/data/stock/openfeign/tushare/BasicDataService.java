@@ -1,9 +1,6 @@
 package com.data.stock.openfeign.tushare;
 
-import com.data.stock.openfeign.tushare.domain.StockBasicPageDTO;
-import com.data.stock.openfeign.tushare.domain.StockBasicQueryDTO;
-import com.data.stock.openfeign.tushare.domain.TradeCalendarPageDTO;
-import com.data.stock.openfeign.tushare.domain.TradeCalendarQueryDTO;
+import com.data.stock.openfeign.tushare.domain.*;
 
 /**
  * 获取股票基础数据
@@ -23,5 +20,12 @@ public interface BasicDataService {
      * @param requestDTO
      * @return
      */
-    TradeCalendarPageDTO tradeCalendar(TradeCalendarQueryDTO requestDTO);
+    StockBasicPageDTO tradeCalendar(TradeCalendarQueryDTO requestDTO);
+
+    /**
+     * 获取每日行情
+     * @param requestDTO
+     * @return
+     */
+    StockBasicPageDTO dailyMarket(StockDailyQueryDTO requestDTO);
 }

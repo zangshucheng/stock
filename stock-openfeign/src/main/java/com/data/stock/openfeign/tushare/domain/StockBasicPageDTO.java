@@ -7,9 +7,9 @@ import java.io.Serializable;
 import java.util.List;
 
 @Data
-public class StockBasicPageDTO implements Serializable {
+public class StockBasicPageDTO<T> implements Serializable {
 
-    private List<StockBasicDTO> tuShareStockBasics;
+    private List<T> tuShareStockBasics;
 
     /**
      * 后面是否还存在数据

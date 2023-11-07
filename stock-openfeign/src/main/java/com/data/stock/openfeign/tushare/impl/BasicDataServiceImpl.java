@@ -31,21 +31,42 @@ public class BasicDataServiceImpl implements BasicDataService {
 
     @Override
     public StockBasicPageDTO stockBasic(StockBasicQueryDTO queryDTO) {
-        StockBasicRequestDTO request = new StockBasicRequestDTO(TuShareURLConstants.STOCK_BASIC_FIELDS);
-        request.setParams(queryDTO);
+        StockBasicPageDTO<StockBasicDTO> stockBasicPageDTO =
+                stockCommonPostRequest(StockBasicDTO.class, queryDTO, TuShareURLConstants.STOCK_BASIC_FIELDS, TuShareURLConstants.STOCK_BASIC_URL);
+        return stockBasicPageDTO;
+    }
+
+    @Override
+    public StockBasicPageDTO tradeCalendar(TradeCalendarQueryDTO requestDTO) {
+        StockBasicPageDTO<TradeCalendarDTO> tradeCalendarPageDTO =
+                stockCommonPostRequest(TradeCalendarDTO.class, requestDTO, TuShareURLConstants.TRADE_CAL_FIELDS, TuShareURLConstants.TRADE_CAL);
+        return tradeCalendarPageDTO;
+    }
+
+    @Override
+    public StockBasicPageDTO dailyMarket(StockDailyQueryDTO requestDTO) {
+        StockBasicPageDTO<StockDailyDTO> stockBasicPageDTO =
+                stockCommonPostRequest(StockDailyDTO.class, requestDTO, TuShareURLConstants.DAILY_FIELDS, TuShareURLConstants.DAILY);
+        return stockBasicPageDTO;
+    }
+
+    private <T, C> StockBasicPageDTO<T> stockCommonPostRequest(Class t, C c, List<String> showFields, String apiName) {
+
+        StockBasicRequestDTO request = new StockBasicRequestDTO(showFields);
+        request.setParams(c);
         request.setToken(tuShareToken);
-        request.setApi_name(TuShareURLConstants.STOCK_BASIC_URL);
+        request.setApi_name(apiName);
         String response = HttpUtil.post(tuShareURL, JSONUtil.toJsonStr(request));
 
         if (Objects.isNull(request)) {
-            log.warn("请求接口 ：{} 失败，未获取到任何响应", TuShareURLConstants.STOCK_BASIC_URL);
+            log.warn("请求接口 ：{} 失败，未获取到任何响应", apiName);
             return null;
         }
 
         TuShareStockBasicResponseDTO tuShareStockBasicResponseDTO = JSONUtil.toBean(response, TuShareStockBasicResponseDTO.class);
 
         if (Objects.isNull(tuShareStockBasicResponseDTO) || tuShareStockBasicResponseDTO.getCode() != 0) {
-            log.warn("请求接口 ：{} 失败, response:{}，", TuShareURLConstants.STOCK_BASIC_URL, tuShareStockBasicResponseDTO);
+            log.warn("请求接口 ：{} 失败, response:{}，", apiName, tuShareStockBasicResponseDTO);
             return null;
         }
 
@@ -53,87 +74,39 @@ public class BasicDataServiceImpl implements BasicDataService {
         List<List<String>> items = tuShareStockBasicResponseDTO.getData().getItems();
 
         if (CollectionUtils.isEmpty(fields) || CollectionUtils.isEmpty(items)) {
-            log.warn("请求接口 ：{} 数据存在问题, response:{}，", TuShareURLConstants.STOCK_BASIC_URL, tuShareStockBasicResponseDTO);
+            log.warn("请求接口 ：{} 数据存在问题, response:{}，", apiName, tuShareStockBasicResponseDTO);
             return null;
         }
 
-        List<StockBasicDTO> stockBasics = new ArrayList<>();
+        List<T> stockBasics = new ArrayList<>();
 
         for (List<String> item : items) {
-            StockBasicDTO tuShareStockBasicDTO = null;
+            T stock = null;
             for (int i = 0; i < fields.size(); i++) {
                 try {
-                    Field declaredField = StockBasicDTO.class.getDeclaredField(fields.get(i));
-                    //有这个字段
-                    if (!Objects.isNull(declaredField)) {
-                        if (Objects.isNull(tuShareStockBasicDTO)) {
-                            tuShareStockBasicDTO = new StockBasicDTO();
-                        }
-
-                        declaredField.setAccessible(true);
-                        declaredField.set(tuShareStockBasicDTO, item.get(i));
-                    }
-                } catch (Exception e) {
-                    log.warn("请求接口 ：{} 解析数据失败, response:{}，", TuShareURLConstants.STOCK_BASIC_URL, tuShareStockBasicResponseDTO);
-                }
-            }
-
-            if (!Objects.isNull(tuShareStockBasicDTO)) {
-                stockBasics.add(tuShareStockBasicDTO);
-            }
-        }
-
-        StockBasicPageDTO tuShareStockBasicPageDTO = new StockBasicPageDTO();
-        tuShareStockBasicPageDTO.setHas_more(tuShareStockBasicResponseDTO.getData().isHas_more());
-        tuShareStockBasicPageDTO.setTuShareStockBasics(stockBasics);
-        return tuShareStockBasicPageDTO;
-    }
-
-    private <T> List<T> getDataObjectResponse(Class t, CommonResponseDataDTO data) {
-        List<T> stockDatas = new ArrayList<>();
-
-        for (List<String> item : data.getItems()) {
-            T stock = null;
-            for (int i = 0; i < data.getFields().size(); i++) {
-                try {
-                    Field declaredField = StockBasicDTO.class.getDeclaredField(data.getFields().get(i));
+                    Field declaredField = t.getDeclaredField(fields.get(i));
                     //有这个字段
                     if (!Objects.isNull(declaredField)) {
                         if (Objects.isNull(stock)) {
-                            stock = (T) t.getClass().newInstance();
+                            stock = (T) t.newInstance();
                         }
 
                         declaredField.setAccessible(true);
                         declaredField.set(stock, item.get(i));
                     }
                 } catch (Exception e) {
-                    log.warn("请求接口 ：{} 解析数据失败, response:{}，", TuShareURLConstants.STOCK_BASIC_URL, data);
+                    log.warn("请求接口 ：{} 解析数据失败, response:{}，", TuShareURLConstants.STOCK_BASIC_URL, item);
                 }
             }
 
             if (!Objects.isNull(stock)) {
-                stockDatas.add(stock);
+                stockBasics.add(stock);
             }
         }
 
-        return stockDatas;
-    }
-
-    @Override
-    public TradeCalendarPageDTO tradeCalendar(TradeCalendarQueryDTO requestDTO) {
-        StockBasicRequestDTO request = new StockBasicRequestDTO();
-        request.setParams(queryDTO);
-        request.setToken(tuShareToken);
-        request.setApi_name(TuShareURLConstants.STOCK_BASIC_URL);
-        String response = HttpUtil.post(tuShareURL, JSONUtil.toJsonStr(request));
-
-        String response = HttpUtil.post(tuShareURL, JSONUtil.toJsonStr(request));
-
-        if (Objects.isNull(request)) {
-            log.warn("请求接口 ：{} 失败，未获取到任何响应", TuShareURLConstants.STOCK_BASIC_URL);
-            return null;
-        }
-
-        return null;
+        StockBasicPageDTO<T> tuShareStockBasicPageDTO = new StockBasicPageDTO();
+        tuShareStockBasicPageDTO.setHas_more(tuShareStockBasicResponseDTO.getData().isHas_more());
+        tuShareStockBasicPageDTO.setTuShareStockBasics(stockBasics);
+        return tuShareStockBasicPageDTO;
     }
 }
