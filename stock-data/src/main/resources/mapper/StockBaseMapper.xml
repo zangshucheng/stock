@@ -5,7 +5,6 @@
 <mapper namespace="com.data.stock.data.mapper.StockBaseMapper">
 
     <resultMap id="BaseResultMap" type="com.data.stock.data.domain.StockBase">
-        <id property="id" column="id" jdbcType="BIGINT"/>
         <result property="tsCode" column="ts_code" jdbcType="VARCHAR"/>
         <result property="stockName" column="stock_name" jdbcType="VARCHAR"/>
         <result property="stockCode" column="stock_code" jdbcType="VARCHAR"/>
@@ -20,8 +19,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id
-        ,ts_code,stock_name,
+        ts_code,stock_name,
         stock_code,area,industry,
         full_name,en_name,cn_spell,
         market,status,is_hs
