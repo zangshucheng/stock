@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.data.stock.data.mapper.StockDailyMapper">
+
+    <resultMap id="BaseResultMap" type="com.data.stock.data.domain.StockDaily">
+            <result property="tsCode" column="ts_code" jdbcType="VARCHAR"/>
+            <result property="tradeDate" column="trade_date" jdbcType="VARCHAR"/>
+            <result property="open" column="open" jdbcType="FLOAT"/>
+            <result property="high" column="high" jdbcType="FLOAT"/>
+            <result property="low" column="low" jdbcType="FLOAT"/>
+            <result property="close" column="close" jdbcType="FLOAT"/>
+            <result property="preClose" column="pre_close" jdbcType="FLOAT"/>
+            <result property="change" column="change" jdbcType="FLOAT"/>
+            <result property="pctChg" column="pct_chg" jdbcType="FLOAT"/>
+            <result property="tradeVolume" column="trade_volume" jdbcType="INTEGER"/>
+            <result property="amount" column="amount" jdbcType="FLOAT"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ts_code,trade_date,open,
+        high,low,close,
+        pre_close,change,pct_chg,
+        trade_volume,amount
+    </sql>
+</mapper>
