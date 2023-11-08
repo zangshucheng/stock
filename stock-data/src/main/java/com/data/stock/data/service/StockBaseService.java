@@ -4,6 +4,7 @@ import com.data.stock.data.domain.StockBase;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 import java.util.List;
+import java.util.Map;
 
 /**
 * @author zangshucheng
@@ -17,4 +18,10 @@ public interface StockBaseService extends IService<StockBase> {
      * @param stockBaseList
      */
     void replaceInto(List<StockBase> stockBaseList);
+
+    /**
+     * 查询tscode和股票code映射
+     * @return
+     */
+    Map<String, String> selectStockCodeMap();
 }

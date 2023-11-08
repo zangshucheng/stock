@@ -5,8 +5,11 @@ import com.data.stock.data.mapper.StockBaseMapper;
 import com.data.stock.data.domain.StockBase;
 import com.data.stock.data.service.StockBaseService;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
 * @author zangshucheng
@@ -20,6 +23,15 @@ public class StockBaseServiceImpl extends ServiceImpl<StockBaseMapper, StockBase
     @Override
     public void replaceInto(List<StockBase> stockBaseList) {
         this.baseMapper.replaceInto(stockBaseList);
+    }
+
+    public Map<String, String> selectStockCodeMap(){
+        List<StockBase> stockBases = this.lambdaQuery().select(StockBase::getTsCode, StockBase::getStockCode).list();
+        if(!CollectionUtils.isEmpty(stockBases)){
+            return stockBases.stream().collect(Collectors.toMap(StockBase::getTsCode, StockBase::getStockCode));
+        }
+
+        return null;
     }
 }
 

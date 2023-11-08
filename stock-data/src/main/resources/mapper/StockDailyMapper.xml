@@ -6,7 +6,7 @@
 
     <resultMap id="BaseResultMap" type="com.data.stock.data.domain.StockDaily">
             <result property="id" column="id" jdbcType="BIGINT"/>
-            <result property="tsCode" column="ts_code" jdbcType="VARCHAR"/>
+            <result property="stockCode" column="stock_code" jdbcType="VARCHAR"/>
             <result property="tradeDate" column="trade_date" jdbcType="VARCHAR"/>
             <result property="open" column="open" jdbcType="DECIMAL"/>
             <result property="high" column="high" jdbcType="DECIMAL"/>

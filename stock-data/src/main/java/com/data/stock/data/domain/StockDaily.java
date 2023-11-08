@@ -25,7 +25,7 @@ public class StockDaily implements Serializable {
     /**
      * 股票代码
      */
-    private String tsCode;
+    private String stockCode;
 
     /**
      * 交易日期

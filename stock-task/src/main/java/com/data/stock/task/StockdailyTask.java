@@ -4,21 +4,21 @@ import com.data.stock.common.constant.MagicNumberConstants;
 import com.data.stock.common.constant.TuShareURLConstants;
 import com.data.stock.common.utils.DateUtil;
 import com.data.stock.data.domain.StockDaily;
+import com.data.stock.data.service.StockBaseService;
 import com.data.stock.data.service.StockDailyService;
 import com.data.stock.openfeign.tushare.BasicDataService;
 import com.data.stock.openfeign.tushare.domain.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
+@Slf4j
 public class StockdailyTask implements StockTask{
 
     @Autowired
@@ -26,6 +26,9 @@ public class StockdailyTask implements StockTask{
 
     @Autowired
     private StockDailyService stockDailyService;
+
+    @Autowired
+    private StockBaseService stockBaseService;
 
     @Override
     public void execute() {
@@ -48,26 +51,33 @@ public class StockdailyTask implements StockTask{
             offset += MagicNumberConstants.STOCK_BASIC_LIMIT;
         }while (!Objects.isNull(stockDailyPageDTO) && stockDailyPageDTO.isHas_more());
 
-        if(!CollectionUtils.isEmpty(tuShareStockBasics)){
-            stockDailyService.deletebyTradeDate(DateUtil.getDateFormat());
-            List<StockDaily> stockDailyList = tuShareStockBasics.stream().map(d -> {
-                StockDaily stockDaily = new StockDaily();
-                stockDaily.setTsCode(d.getTs_code());
-                stockDaily.setTradeDate(d.getTrade_date());
-                stockDaily.setOpen(new BigDecimal(d.getOpen()));
-                stockDaily.setHigh(new BigDecimal(d.getHigh()));
-                stockDaily.setLow(new BigDecimal(d.getLow()));
-                stockDaily.setClose(new BigDecimal(d.getClose()));
-                stockDaily.setPreClose(new BigDecimal(d.getPre_close()));
-                stockDaily.setPctChg(new BigDecimal(d.getPct_chg()));
-                stockDaily.setChangeRange(new BigDecimal(d.getChange()));
-                stockDaily.setTradeVolume(new BigDecimal(d.getAmount()));
-                stockDaily.setAmount(new BigDecimal(d.getAmount()));
-                return stockDaily;
-            }).collect(Collectors.toList());
-
-            stockDailyService.saveBatch(stockDailyList);
+        if(CollectionUtils.isEmpty(tuShareStockBasics)){
+            log.warn("未取到股票日行情信息");
+            return;
         }
+
+        Map<String, String> tsMap = stockBaseService.selectStockCodeMap();
+
+        List<StockDaily> stockDailyList = tuShareStockBasics.stream().map(d -> {
+            StockDaily stockDaily = new StockDaily();
+            stockDaily.setStockCode(tsMap.get(d.getTs_code()));
+            stockDaily.setTradeDate(d.getTrade_date());
+            stockDaily.setOpen(new BigDecimal(d.getOpen()));
+            stockDaily.setHigh(new BigDecimal(d.getHigh()));
+            stockDaily.setLow(new BigDecimal(d.getLow()));
+            stockDaily.setClose(new BigDecimal(d.getClose()));
+            stockDaily.setPreClose(new BigDecimal(d.getPre_close()));
+            stockDaily.setPctChg(new BigDecimal(d.getPct_chg()));
+            stockDaily.setChangeRange(new BigDecimal(d.getChange()));
+            stockDaily.setTradeVolume(new BigDecimal(d.getAmount()));
+            stockDaily.setAmount(new BigDecimal(d.getAmount()));
+            return stockDaily;
+        }).collect(Collectors.toList());
+        stockDailyService.deletebyTradeDate(DateUtil.getDateFormat());
+        //日行情数据入库
+        stockDailyService.saveBatch(stockDailyList);
+
+
     }
 
     private boolean isTradeDay(){
