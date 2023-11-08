@@ -36,8 +36,8 @@ public class StockLimitAnalysis implements Serializable {
     /**
      * 
      */
-    @TableField(value = "statistical_time")
-    private Integer statisticalTime;
+    @TableField(value = "trade_date")
+    private String tradeDate;
 
     /**
      * 炒作题材
@@ -61,13 +61,13 @@ public class StockLimitAnalysis implements Serializable {
      * 类型
      */
     @TableField(value = "limit_type")
-    private Integer limitType;
+    private String limitType;
 
     /**
-     * 当前价格
+     * 涨幅百分比
      */
-    @TableField(value = "range")
-    private BigDecimal range;
+    @TableField(value = "range_percent")
+    private BigDecimal rangePercent;
 
     /**
      * 换手率

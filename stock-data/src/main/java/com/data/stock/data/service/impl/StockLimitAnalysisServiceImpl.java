@@ -15,6 +15,10 @@ import org.springframework.stereotype.Service;
 public class StockLimitAnalysisServiceImpl extends ServiceImpl<StockLimitAnalysisMapper, StockLimitAnalysis>
     implements StockLimitAnalysisService{
 
+    @Override
+    public void deletebyTradeDate(String tradeDate) {
+        this.baseMapper.deletebyTradeDate(tradeDate);
+    }
 }
 
 

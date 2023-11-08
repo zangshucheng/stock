@@ -28,6 +28,12 @@ public class StockDaily implements Serializable {
     private String stockCode;
 
     /**
+     * 股票代码
+     */
+    @TableField(value = "stock_Name")
+    private String stockName;
+
+    /**
      * 交易日期
      */
     @TableField(value = "trade_date")

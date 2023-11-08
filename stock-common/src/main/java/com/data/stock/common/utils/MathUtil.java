@@ -15,7 +15,7 @@ public final class MathUtil {
      * @param stockPrice
      * @return
      */
-    public static boolean upLimt(String stockCode, String stockPrice, String previousPrice){
+    public static boolean upLimt(String stockCode, BigDecimal stockPrice, BigDecimal previousPrice){
         BigDecimal stockGrowth = null;
         if(stockCode.startsWith("00") || stockCode.startsWith("60")){
             stockGrowth = MagicNumberConstants.UP_LIMIT_TEN;
@@ -23,12 +23,12 @@ public final class MathUtil {
             stockGrowth = MagicNumberConstants.UP_LIMIT_TWENTY;
         }
 
-        BigDecimal upLimit = new BigDecimal(stockPrice).multiply(BigDecimal.ONE.add(stockGrowth)).setScale(2, BigDecimal.ROUND_HALF_UP);
+        BigDecimal upLimit = previousPrice.multiply(BigDecimal.ONE.add(stockGrowth)).setScale(2, BigDecimal.ROUND_HALF_UP);
 
-        return new BigDecimal(stockPrice).compareTo(upLimit) == 0;
+        return stockPrice.compareTo(upLimit) == 0;
     }
 
-    public static boolean downLimt(String stockCode, String stockPrice, String previousPrice){
+    public static boolean downLimt(String stockCode, BigDecimal stockPrice, BigDecimal previousPrice){
         BigDecimal stockGrowth = null;
         if(stockCode.startsWith("00") || stockCode.startsWith("60")){
             stockGrowth = MagicNumberConstants.DOWN_LIMIT_TEN;
@@ -36,8 +36,8 @@ public final class MathUtil {
             stockGrowth = MagicNumberConstants.DOWN_LIMIT_TWENTY;
         }
 
-        BigDecimal downLimit = new BigDecimal(stockPrice).multiply(BigDecimal.ONE.subtract(stockGrowth)).setScale(2, BigDecimal.ROUND_HALF_UP);
+        BigDecimal downLimit = previousPrice.multiply(BigDecimal.ONE.subtract(stockGrowth)).setScale(2, BigDecimal.ROUND_HALF_UP);
 
-        return new BigDecimal(stockPrice).compareTo(downLimit) == 0;
+        return stockPrice.compareTo(downLimit) == 0;
     }
 }

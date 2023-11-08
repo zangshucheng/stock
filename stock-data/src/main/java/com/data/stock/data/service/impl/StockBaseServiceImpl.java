@@ -9,6 +9,7 @@ import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -25,10 +26,10 @@ public class StockBaseServiceImpl extends ServiceImpl<StockBaseMapper, StockBase
         this.baseMapper.replaceInto(stockBaseList);
     }
 
-    public Map<String, String> selectStockCodeMap(){
-        List<StockBase> stockBases = this.lambdaQuery().select(StockBase::getTsCode, StockBase::getStockCode).list();
+    public Map<String, StockBase> selectStockCodeMap(){
+        List<StockBase> stockBases = this.lambdaQuery().select(StockBase::getTsCode, StockBase::getStockCode, StockBase::getStockName).list();
         if(!CollectionUtils.isEmpty(stockBases)){
-            return stockBases.stream().collect(Collectors.toMap(StockBase::getTsCode, StockBase::getStockCode));
+            return stockBases.stream().collect(Collectors.toMap(StockBase::getTsCode, Function.identity()));
         }
 
         return null;

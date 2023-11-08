@@ -2,6 +2,7 @@ package com.data.stock.data.mapper;
 
 import com.data.stock.data.domain.StockLimitAnalysis;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.apache.ibatis.annotations.Param;
 
 /**
 * @author zangshucheng
@@ -11,6 +12,11 @@ import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 */
 public interface StockLimitAnalysisMapper extends BaseMapper<StockLimitAnalysis> {
 
+    /**
+     * 删除当前时间的数据
+     * @param tradeDate
+     */
+    void deletebyTradeDate(@Param("tradeDate") String tradeDate);
 }
 
 

@@ -23,5 +23,5 @@ public interface StockBaseService extends IService<StockBase> {
      * 查询tscode和股票code映射
      * @return
      */
-    Map<String, String> selectStockCodeMap();
+    Map<String, StockBase> selectStockCodeMap();
 }

@@ -10,4 +10,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface StockLimitAnalysisService extends IService<StockLimitAnalysis> {
 
+    void deletebyTradeDate(String tradeDate);
 }
