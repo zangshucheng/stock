@@ -4,27 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.data.stock.data.mapper.StockDailyMapper">
 
-    <resultMap id="BaseResultMap" type="com.data.stock.data.domain.StockDaily">
-            <result property="id" column="id" jdbcType="BIGINT"/>
-            <result property="stockCode" column="stock_code" jdbcType="VARCHAR"/>
-            <result property="tradeDate" column="trade_date" jdbcType="VARCHAR"/>
-            <result property="open" column="open" jdbcType="DECIMAL"/>
-            <result property="high" column="high" jdbcType="DECIMAL"/>
-            <result property="low" column="low" jdbcType="DECIMAL"/>
-            <result property="close" column="close" jdbcType="DECIMAL"/>
-            <result property="preClose" column="pre_close" jdbcType="DECIMAL"/>
-            <result property="changeRange" column="change_range" jdbcType="DECIMAL"/>
-            <result property="pctChg" column="pct_chg" jdbcType="DECIMAL"/>
-            <result property="tradeVolume" column="trade_volume" jdbcType="DECIMAL"/>
-            <result property="amount" column="amount" jdbcType="DECIMAL"/>
-    </resultMap>
-
-    <sql id="Base_Column_List">
-        id,ts_code,trade_date,open,
-        high,low,close,
-        pre_close,change_range,pct_chg,
-        trade_volume,amount
-    </sql>
     <delete id="deletebyTradeDate">
         delete from stock_daily where trade_date = #{tradeDate}
     </delete>
