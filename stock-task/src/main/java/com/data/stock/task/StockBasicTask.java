@@ -9,6 +9,7 @@ import com.data.stock.openfeign.tushare.domain.StockBasicPageDTO;
 import com.data.stock.openfeign.tushare.domain.StockBasicDTO;
 import com.data.stock.openfeign.tushare.domain.StockBasicQueryDTO;
 import com.data.stock.openfeign.tushare.domain.TradeCalendarQueryDTO;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
@@ -18,7 +19,8 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-//@Component
+@Component("stockBasicTask")
+@Slf4j
 public class StockBasicTask implements StockTask{
 
     @Autowired

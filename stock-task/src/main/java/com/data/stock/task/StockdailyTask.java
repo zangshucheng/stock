@@ -23,7 +23,7 @@ import java.math.BigDecimal;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@Component
+@Component("stockdailyTask")
 @Slf4j
 public class StockdailyTask implements StockTask{
 

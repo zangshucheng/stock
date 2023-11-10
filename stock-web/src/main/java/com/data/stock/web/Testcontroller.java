@@ -4,6 +4,7 @@ package com.data.stock.web;
 import com.data.stock.task.StockTask;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,11 +15,20 @@ import org.springframework.web.bind.annotation.RestController;
 public class Testcontroller {
 
     @Autowired
-    private StockTask stockTask;
+    private StockTask stockBasicTask;
 
-    @GetMapping("/test")
-    public void test(){
-        stockTask.execute();
+    @Autowired
+    private StockTask stockdailyTask;
+
+    @GetMapping("/daily")
+    public void testDaily(){
+        stockdailyTask.execute();
+        log.warn("ss");
+    }
+
+    @GetMapping("/base")
+    public void testBase(){
+        stockBasicTask.execute();
         log.warn("ss");
     }
 }
