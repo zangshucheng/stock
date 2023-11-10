@@ -15,7 +15,7 @@ import java.util.List;
  * <author>         <time>          <version>        <desc>
  */
 @Data
-public class TradeCalendarPageDTO implements Serializable {
+public class TuShareTradeCalendarPageDTO implements Serializable {
 
     /**
      * 日历数据
