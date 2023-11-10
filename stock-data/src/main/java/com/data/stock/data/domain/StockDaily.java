@@ -70,10 +70,22 @@ public class StockDaily implements Serializable {
     private BigDecimal preClose;
 
     /**
+     * 价格变动幅度
+     */
+    @TableField(value = "change_range")
+    private BigDecimal changeRange;
+
+    /**
      * 价格变动百分比
      */
     @TableField(value = "pct_chg")
     private BigDecimal pctChg;
+
+    /**
+     * 成交总手数
+     */
+    @TableField(value = "trade_volume")
+    private BigDecimal tradeVolume;
 
     /**
      * 成交总额

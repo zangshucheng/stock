@@ -40,8 +40,8 @@ public class DailyServiceImpl implements DailyService {
     private StockDailyService stockDailyService;
 
     @Override
-    public void dailyMarket(String trdaeDate) {
-        List<StockDailyBO> stockDailys = tuShareDailyHandler.dailyMarket(trdaeDate);
+    public void dailyMarket(String tradeDate) {
+        List<StockDailyBO> stockDailys = tuShareDailyHandler.dailyMarket(tradeDate);
 
         if(CollectionUtils.isEmpty(stockDailys)){
             log.warn("交易日期：{} 未取到当天交易数据！");
@@ -58,10 +58,12 @@ public class DailyServiceImpl implements DailyService {
             stockDaily.setClose(d.getClose());
             stockDaily.setPreClose(d.getPreClose());
             stockDaily.setPctChg(d.getPctChg());
+            stockDaily.setTradeVolume(d.getTradeVolume());
+            stockDaily.setChangeRange(d.getChangeRange());
             stockDaily.setAmount(d.getAmount());
             return stockDaily;
         }).collect(Collectors.toList());
-        stockDailyService.deletebyTradeDate(trdaeDate);
+        stockDailyService.deletebyTradeDate(tradeDate);
         //日行情数据入库
         stockDailyService.saveBatch(stockDailyList);
 
@@ -96,7 +98,7 @@ public class DailyServiceImpl implements DailyService {
 
         if(!CollectionUtils.isEmpty(limitAnalyses)){
             //删除当前数据
-            limitAnalysisService.deletebyTradeDate(trdaeDate);
+            limitAnalysisService.deletebyTradeDate(tradeDate);
             limitAnalysisService.saveBatch(limitAnalyses);
         }
     }

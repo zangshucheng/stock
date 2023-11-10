@@ -59,7 +59,7 @@ public class TuShareDailyHandler implements DailyHandler {
         TuSahreStockBasicPageDTO<TuSahreStockDailyDTO> stockDailyPageDTO = null;
         do {
             //取数据
-            stockDailyPageDTO = tuSahreBasicDataService.dailyMarket(new TuSahreStockDailyQueryDTO(MagicNumberConstants.STOCK_BASIC_LIMIT, offset, DateUtil.getDateFormat()));
+            stockDailyPageDTO = tuSahreBasicDataService.dailyMarket(new TuSahreStockDailyQueryDTO(MagicNumberConstants.STOCK_BASIC_LIMIT, offset, trdaeDate));
 
             if (Objects.isNull(stockDailyPageDTO) || CollectionUtils.isEmpty(stockDailyPageDTO.getTuShareStockBasics())) {
                 break;
