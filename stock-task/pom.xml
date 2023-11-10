@@ -13,14 +13,6 @@
     <artifactId>stock-task</artifactId>
     <name>stock-task</name>
     <dependencies>
-        <dependency>
-            <groupId>com.data.stock</groupId>
-            <artifactId>stock-openfeign</artifactId>
-        </dependency>
 
-        <dependency>
-            <groupId>com.data.stock</groupId>
-            <artifactId>stock-data</artifactId>
-        </dependency>
     </dependencies>
 </project>

@@ -14,7 +14,7 @@ import java.io.Serializable;
  * <author>         <time>          <version>        <desc>
  */
 @Data
-public class BasePageDTO implements Serializable {
+public class TuSahreBasePageDTO implements Serializable {
 
     /**
      * 单次返回数据长度

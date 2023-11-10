@@ -8,13 +8,13 @@ import java.io.Serializable;
  * 参考文档 https://tushare.pro/document/2?doc_id=25
  */
 @Data
-public class StockBasicQueryDTO extends BasePageDTO implements Serializable {
+public class TuSahreStockBasicQueryDTO extends TuSahreBasePageDTO implements Serializable {
 
-    public StockBasicQueryDTO(){
+    public TuSahreStockBasicQueryDTO(){
 
     }
 
-    public StockBasicQueryDTO(int limit, int offset){
+    public TuSahreStockBasicQueryDTO(int limit, int offset){
         this.limit = limit;
         this.offset = offset;
     }

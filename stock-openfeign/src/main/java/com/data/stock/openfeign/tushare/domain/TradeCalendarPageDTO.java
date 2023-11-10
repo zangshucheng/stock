@@ -20,7 +20,7 @@ public class TradeCalendarPageDTO implements Serializable {
     /**
      * 日历数据
      */
-    private List<TradeCalendarDTO> tradeCalendars;
+    private List<TuSahreTradeCalendarDTO> tradeCalendars;
 
     /**
      * 后面是否还存在数据

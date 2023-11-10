@@ -21,7 +21,7 @@
         </dependency>
         <dependency>
             <groupId>com.data.stock</groupId>
-            <artifactId>stock-task</artifactId>
+            <artifactId>stock-service</artifactId>
         </dependency>
     </dependencies>
 </project>

@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Data
-public class CommonResponseDataDTO implements Serializable {
+public class TuSahreCommonResponseDataDTO implements Serializable {
 
     /**
      * 返回包含的字段

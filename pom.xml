@@ -70,6 +70,12 @@
                 <artifactId>stock-task</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.data.stock</groupId>
+                <artifactId>stock-service</artifactId>
+                <version>${project.version}</version>
+            </dependency>
         </dependencies>
 
     </dependencyManagement>

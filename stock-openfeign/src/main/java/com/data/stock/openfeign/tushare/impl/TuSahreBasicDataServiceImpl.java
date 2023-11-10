@@ -4,8 +4,7 @@ package com.data.stock.openfeign.tushare.impl;
 import cn.hutool.http.HttpUtil;
 import cn.hutool.json.JSONUtil;
 import com.data.stock.common.constant.TuShareURLConstants;
-import com.data.stock.common.utils.DateUtil;
-import com.data.stock.openfeign.tushare.BasicDataService;
+import com.data.stock.openfeign.tushare.TuSahreBasicDataService;
 import com.data.stock.openfeign.tushare.domain.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,11 +16,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static com.data.stock.common.constant.TuShareURLConstants.STOCK_BASIC_FIELDS;
-
 @Service
 @Slf4j
-public class BasicDataServiceImpl implements BasicDataService {
+public class TuSahreBasicDataServiceImpl implements TuSahreBasicDataService {
 
     @Value("${tu.share.token:dae960427ac8f728cd1d4115a9f884e7c5e9ecbe0a25cd703c2ceee1}")
     private String tuShareToken;
@@ -30,29 +27,29 @@ public class BasicDataServiceImpl implements BasicDataService {
     private String tuShareURL;
 
     @Override
-    public StockBasicPageDTO stockBasic(StockBasicQueryDTO queryDTO) {
-        StockBasicPageDTO<StockBasicDTO> stockBasicPageDTO =
-                stockCommonPostRequest(StockBasicDTO.class, queryDTO, TuShareURLConstants.STOCK_BASIC_FIELDS, TuShareURLConstants.STOCK_BASIC_URL);
-        return stockBasicPageDTO;
+    public TuSahreStockBasicPageDTO stockBasic(TuSahreStockBasicQueryDTO queryDTO) {
+        TuSahreStockBasicPageDTO<TuSahreStockBasicDTO> tuSahreStockBasicPageDTO =
+                stockCommonPostRequest(TuSahreStockBasicDTO.class, queryDTO, TuShareURLConstants.STOCK_BASIC_FIELDS, TuShareURLConstants.STOCK_BASIC_URL);
+        return tuSahreStockBasicPageDTO;
     }
 
     @Override
-    public StockBasicPageDTO tradeCalendar(TradeCalendarQueryDTO requestDTO) {
-        StockBasicPageDTO<TradeCalendarDTO> tradeCalendarPageDTO =
-                stockCommonPostRequest(TradeCalendarDTO.class, requestDTO, TuShareURLConstants.TRADE_CAL_FIELDS, TuShareURLConstants.TRADE_CAL);
+    public TuSahreStockBasicPageDTO tradeCalendar(TuSahreTradeCalendarQueryDTO requestDTO) {
+        TuSahreStockBasicPageDTO<TuSahreTradeCalendarDTO> tradeCalendarPageDTO =
+                stockCommonPostRequest(TuSahreTradeCalendarDTO.class, requestDTO, TuShareURLConstants.TRADE_CAL_FIELDS, TuShareURLConstants.TRADE_CAL);
         return tradeCalendarPageDTO;
     }
 
     @Override
-    public StockBasicPageDTO dailyMarket(StockDailyQueryDTO requestDTO) {
-        StockBasicPageDTO<StockDailyDTO> stockBasicPageDTO =
-                stockCommonPostRequest(StockDailyDTO.class, requestDTO, TuShareURLConstants.DAILY_FIELDS, TuShareURLConstants.DAILY);
-        return stockBasicPageDTO;
+    public TuSahreStockBasicPageDTO dailyMarket(TuSahreStockDailyQueryDTO requestDTO) {
+        TuSahreStockBasicPageDTO<TuSahreStockDailyDTO> tuSahreStockBasicPageDTO =
+                stockCommonPostRequest(TuSahreStockDailyDTO.class, requestDTO, TuShareURLConstants.DAILY_FIELDS, TuShareURLConstants.DAILY);
+        return tuSahreStockBasicPageDTO;
     }
 
-    private <T, C> StockBasicPageDTO<T> stockCommonPostRequest(Class t, C c, List<String> showFields, String apiName) {
+    private <T, C> TuSahreStockBasicPageDTO<T> stockCommonPostRequest(Class t, C c, List<String> showFields, String apiName) {
 
-        StockBasicRequestDTO request = new StockBasicRequestDTO(showFields);
+        TuSahreStockBasicRequestDTO request = new TuSahreStockBasicRequestDTO(showFields);
         request.setParams(c);
         request.setToken(tuShareToken);
         request.setApi_name(apiName);
@@ -104,9 +101,9 @@ public class BasicDataServiceImpl implements BasicDataService {
             }
         }
 
-        StockBasicPageDTO<T> tuShareStockBasicPageDTO = new StockBasicPageDTO();
-        tuShareStockBasicPageDTO.setHas_more(tuShareStockBasicResponseDTO.getData().isHas_more());
-        tuShareStockBasicPageDTO.setTuShareStockBasics(stockBasics);
-        return tuShareStockBasicPageDTO;
+        TuSahreStockBasicPageDTO<T> tuShareTuSahreStockBasicPageDTO = new TuSahreStockBasicPageDTO();
+        tuShareTuSahreStockBasicPageDTO.setHas_more(tuShareStockBasicResponseDTO.getData().isHas_more());
+        tuShareTuSahreStockBasicPageDTO.setTuShareStockBasics(stockBasics);
+        return tuShareTuSahreStockBasicPageDTO;
     }
 }

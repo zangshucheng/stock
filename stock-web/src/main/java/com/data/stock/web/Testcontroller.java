@@ -1,10 +1,10 @@
 package com.data.stock.web;
 
 
-import com.data.stock.task.StockTask;
+import com.data.stock.service.base.BaseStockService;
+import com.data.stock.service.daily.DailyService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,20 +15,20 @@ import org.springframework.web.bind.annotation.RestController;
 public class Testcontroller {
 
     @Autowired
-    private StockTask stockBasicTask;
+    private BaseStockService baseStockService;
 
     @Autowired
-    private StockTask stockdailyTask;
+    private DailyService dailyService;
 
     @GetMapping("/daily")
-    public void testDaily(){
-        stockdailyTask.execute();
+    public void testDaily(String tradeDate){
+        dailyService.dailyMarket(tradeDate);
         log.warn("ss");
     }
 
     @GetMapping("/base")
     public void testBase(){
-        stockBasicTask.execute();
+        baseStockService.stockBase();
         log.warn("ss");
     }
 }

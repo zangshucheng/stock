@@ -10,11 +10,11 @@ import java.util.List;
  * 参考文档 https://tushare.pro/document/2?doc_id=25
  */
 @Data
-public class StockBasicRequestDTO<T> implements Serializable {
+public class TuSahreStockBasicRequestDTO<T> implements Serializable {
 
-    public StockBasicRequestDTO(){}
+    public TuSahreStockBasicRequestDTO(){}
 
-    public StockBasicRequestDTO(List<String> fields){
+    public TuSahreStockBasicRequestDTO(List<String> fields){
         this.fields = fields;
     }
 

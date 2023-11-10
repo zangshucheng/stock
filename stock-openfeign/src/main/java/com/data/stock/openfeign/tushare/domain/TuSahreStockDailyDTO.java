@@ -5,7 +5,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-public class StockDailyDTO implements Serializable {
+public class TuSahreStockDailyDTO implements Serializable {
 
     /**
      * 股票代码

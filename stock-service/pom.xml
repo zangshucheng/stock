@@ -9,7 +9,19 @@
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>stock-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>stock-service</name>
+	<packaging>jar</packaging>
 	<description>stock-service</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.data.stock</groupId>
+			<artifactId>stock-openfeign</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.data.stock</groupId>
+			<artifactId>stock-data</artifactId>
+		</dependency>
+	</dependencies>
 </project>

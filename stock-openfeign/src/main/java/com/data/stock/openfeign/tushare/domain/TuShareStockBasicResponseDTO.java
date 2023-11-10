@@ -22,5 +22,5 @@ public class TuShareStockBasicResponseDTO implements Serializable {
     /**
      * 返回的数据
      */
-    private CommonResponseDataDTO data;
+    private TuSahreCommonResponseDataDTO data;
 }

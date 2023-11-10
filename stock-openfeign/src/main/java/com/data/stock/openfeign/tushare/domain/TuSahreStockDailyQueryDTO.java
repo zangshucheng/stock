@@ -3,11 +3,11 @@ package com.data.stock.openfeign.tushare.domain;
 import lombok.Data;
 
 @Data
-public class StockDailyQueryDTO extends BasePageDTO{
+public class TuSahreStockDailyQueryDTO extends TuSahreBasePageDTO {
 
-    public StockDailyQueryDTO(){}
+    public TuSahreStockDailyQueryDTO(){}
 
-    public StockDailyQueryDTO(int limit, int offset, String trade_date){
+    public TuSahreStockDailyQueryDTO(int limit, int offset, String trade_date){
         this.limit = limit;
         this.offset = offset;
         this.trade_date = trade_date;
