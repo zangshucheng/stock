@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 /**
 * @author zangshucheng
 * @description 针对表【stock_limit_analysis(股票涨跌分析)】的数据库操作Service实现
-* @createDate 2023-11-08 21:12:05
+* @createDate 2023-11-11 12:59:51
 */
 @Service
 public class StockLimitAnalysisServiceImpl extends ServiceImpl<StockLimitAnalysisMapper, StockLimitAnalysis>

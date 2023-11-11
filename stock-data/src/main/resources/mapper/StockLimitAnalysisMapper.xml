@@ -8,20 +8,19 @@
             <id property="id" column="id" jdbcType="BIGINT"/>
             <result property="stockName" column="stock_name" jdbcType="VARCHAR"/>
             <result property="stockCode" column="stock_code" jdbcType="VARCHAR"/>
-            <result property="tradeDate" column="trade_date" jdbcType="VARCHAR"/>
+            <result property="tradeDate" column="trade_date" jdbcType="INTEGER"/>
             <result property="hypeSubject" column="hype_subject" jdbcType="VARCHAR"/>
             <result property="price" column="price" jdbcType="DECIMAL"/>
-            <result property="marketValue" column="market_value" jdbcType="BIGINT"/>
-            <result property="limitType" column="limit_type" jdbcType="TINYINT"/>
+            <result property="limitType" column="limit_type" jdbcType="VARCHAR"/>
             <result property="rangePercent" column="range_percent" jdbcType="DECIMAL"/>
             <result property="turnoverRate" column="turnover_rate" jdbcType="DECIMAL"/>
+            <result property="circulateMarketValue" column="circulate_market_value" jdbcType="DECIMAL"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         id,stock_name,stock_code,
-        trade_date,hype_subject,price,
-        market_value,limit_type,range_percent,
-        turnover_rate
+        trade_date,hype_subject,price,limit_type,range_percent,
+        turnover_rate,circulate_market_value
     </sql>
     <delete id="deletebyTradeDate">
         delete from stock_limit_analysis where trade_date = #{tradeDate};

@@ -52,19 +52,13 @@ public class StockLimitAnalysis implements Serializable {
     private BigDecimal price;
 
     /**
-     * 市值（单位亿）
-     */
-    @TableField(value = "market_value")
-    private Long marketValue;
-
-    /**
-     * 类型
+     * 类型 up down
      */
     @TableField(value = "limit_type")
     private String limitType;
 
     /**
-     * 涨幅百分比
+     * 涨幅
      */
     @TableField(value = "range_percent")
     private BigDecimal rangePercent;
@@ -74,6 +68,12 @@ public class StockLimitAnalysis implements Serializable {
      */
     @TableField(value = "turnover_rate")
     private BigDecimal turnoverRate;
+
+    /**
+     * 流通市值
+     */
+    @TableField(value = "circulate_market_value")
+    private BigDecimal circulateMarketValue;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
