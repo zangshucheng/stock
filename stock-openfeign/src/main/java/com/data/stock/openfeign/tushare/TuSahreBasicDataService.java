@@ -27,5 +27,12 @@ public interface TuSahreBasicDataService {
      * @param requestDTO
      * @return
      */
-    TuSahreStockBasicPageDTO dailyMarket(TuSahreStockDailyQueryDTO requestDTO);
+    TuSahreStockBasicPageDTO daily(TuSahreStockDailyQueryDTO requestDTO);
+
+    /**
+     * 每日指标
+     * @param requestDTO
+     * @return
+     */
+    TuSahreStockBasicPageDTO dailyBasic(TuShareDailyBasicQueryDTO requestDTO);
 }

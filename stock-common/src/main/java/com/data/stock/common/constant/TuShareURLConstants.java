@@ -13,12 +13,17 @@ public final class TuShareURLConstants {
     /**
      * 获取交易日历
      */
-    public static final String  TRADE_CAL = "trade_cal";
+    public static final String TRADE_CAL = "trade_cal";
 
     /**
      * 获取交易日历
      */
-    public static final String  DAILY = "daily";
+    public static final String DAILY = "daily";
+
+    /**
+     * 获取交易日历
+     */
+    public static final String DAILY_BASIC = "daily_basic";
 
     /**
      * 非交易日
@@ -44,5 +49,10 @@ public final class TuShareURLConstants {
     /**
      * 每日行情
      */
-    public static final List<String> DAILY_FIELDS= Arrays.asList("ts_code","trade_date","open","high","low","close","pre_close","change","pct_chg","vol","amount");
+    public static final List<String> DAILY_FIELDS = Arrays.asList("ts_code", "trade_date", "open", "high", "low", "close", "pre_close", "change", "pct_chg", "vol", "amount");
+
+    /**
+     * 每日指标
+     */
+    public static final List<String> DAILY_BASIC_FIELDS = Arrays.asList("ts_code", "trade_date", "close", "turnover_rate", "turnover_rate_f", "volume_ratio", "pe", "pe_ttm", "pb", "ps", "ps_ttm", "dv_ratio", "dv_ttm", "total_share", "float_share", "free_share", "total_mv", "circ_mv", "limit_status");
 }

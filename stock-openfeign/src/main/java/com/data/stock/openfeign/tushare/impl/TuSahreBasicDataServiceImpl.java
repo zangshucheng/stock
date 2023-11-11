@@ -41,10 +41,17 @@ public class TuSahreBasicDataServiceImpl implements TuSahreBasicDataService {
     }
 
     @Override
-    public TuSahreStockBasicPageDTO dailyMarket(TuSahreStockDailyQueryDTO requestDTO) {
+    public TuSahreStockBasicPageDTO daily(TuSahreStockDailyQueryDTO requestDTO) {
         TuSahreStockBasicPageDTO<TuSahreStockDailyDTO> tuSahreStockBasicPageDTO =
                 stockCommonPostRequest(TuSahreStockDailyDTO.class, requestDTO, TuShareURLConstants.DAILY_FIELDS, TuShareURLConstants.DAILY);
         return tuSahreStockBasicPageDTO;
+    }
+
+    @Override
+    public TuSahreStockBasicPageDTO dailyBasic(TuShareDailyBasicQueryDTO requestDTO) {
+        TuSahreStockBasicPageDTO<TuShareDailyBasicDTO> tuShareDailyBasicDTO =
+                stockCommonPostRequest(TuShareDailyBasicDTO.class, requestDTO, TuShareURLConstants.DAILY_BASIC_FIELDS, TuShareURLConstants.DAILY_BASIC);
+        return tuShareDailyBasicDTO;
     }
 
     private <T, C> TuSahreStockBasicPageDTO<T> stockCommonPostRequest(Class t, C c, List<String> showFields, String apiName) {
@@ -55,7 +62,7 @@ public class TuSahreBasicDataServiceImpl implements TuSahreBasicDataService {
         request.setApi_name(apiName);
         String response = HttpUtil.post(tuShareURL, JSONUtil.toJsonStr(request));
 
-        if (Objects.isNull(request)) {
+        if (Objects.isNull(response)) {
             log.warn("请求接口 ：{} 失败，未获取到任何响应", apiName);
             return null;
         }

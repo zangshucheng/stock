@@ -61,6 +61,9 @@ public class DailyServiceImpl implements DailyService {
             stockDaily.setTradeVolume(d.getTradeVolume());
             stockDaily.setChangeRange(d.getChangeRange());
             stockDaily.setAmount(d.getAmount());
+            stockDaily.setCirculateMarketValue(d.getCirculateMarketValue());
+            stockDaily.setTurnoverRate(d.getTurnoverRate());
+            stockDaily.setVolumnRation(d.getVolumnRation());
             return stockDaily;
         }).collect(Collectors.toList());
         stockDailyService.deletebyTradeDate(tradeDate);

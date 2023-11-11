@@ -2,7 +2,7 @@ package com.data.stock.service.daily.handler.impl;
 
 import com.data.stock.common.constant.MagicNumberConstants;
 import com.data.stock.common.constant.TuShareURLConstants;
-import com.data.stock.common.utils.DateUtil;
+import com.data.stock.common.utils.MathUtil;
 import com.data.stock.data.domain.StockBase;
 import com.data.stock.data.service.StockBaseService;
 import com.data.stock.openfeign.tushare.TuSahreBasicDataService;
@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 @Service("tuShareDailyHandler")
@@ -54,12 +55,13 @@ public class TuShareDailyHandler implements DailyHandler {
             return null;
         }
 
+        //获取每日行情
         List<TuSahreStockDailyDTO> tuShareStockBasics = new ArrayList<>();
         int offset = MagicNumberConstants.STOCK_BASIC_OFFSET_START;
         TuSahreStockBasicPageDTO<TuSahreStockDailyDTO> stockDailyPageDTO = null;
         do {
             //取数据
-            stockDailyPageDTO = tuSahreBasicDataService.dailyMarket(new TuSahreStockDailyQueryDTO(MagicNumberConstants.STOCK_BASIC_LIMIT, offset, trdaeDate));
+            stockDailyPageDTO = tuSahreBasicDataService.daily(new TuSahreStockDailyQueryDTO(MagicNumberConstants.STOCK_BASIC_LIMIT, offset, trdaeDate));
 
             if (Objects.isNull(stockDailyPageDTO) || CollectionUtils.isEmpty(stockDailyPageDTO.getTuShareStockBasics())) {
                 break;
@@ -72,6 +74,24 @@ public class TuShareDailyHandler implements DailyHandler {
             log.warn("未取到股票日行情信息");
             return null;
         }
+
+        //获取每日指标
+        List<TuShareDailyBasicDTO> tuShareDailyBasics = new ArrayList<>();
+
+        offset = MagicNumberConstants.STOCK_BASIC_OFFSET_START;
+        TuSahreStockBasicPageDTO<TuShareDailyBasicDTO> dailyBasicPageDTO = null;
+        do {
+            //取数据
+            dailyBasicPageDTO = tuSahreBasicDataService.dailyBasic(new TuShareDailyBasicQueryDTO(MagicNumberConstants.STOCK_BASIC_LIMIT, offset, trdaeDate));
+
+            if (Objects.isNull(dailyBasicPageDTO) || CollectionUtils.isEmpty(dailyBasicPageDTO.getTuShareStockBasics())) {
+                break;
+            }
+            tuShareDailyBasics.addAll(dailyBasicPageDTO.getTuShareStockBasics());
+            offset += MagicNumberConstants.STOCK_BASIC_LIMIT;
+        } while (!Objects.isNull(dailyBasicPageDTO) && dailyBasicPageDTO.isHas_more());
+
+        Map<String, TuShareDailyBasicDTO> dailyBasicMap = tuShareDailyBasics.stream().collect(Collectors.toMap(TuShareDailyBasicDTO::getTs_code, Function.identity()));
 
         Map<String, StockBase> tsMap = stockBaseService.selectStockCodeMap();
 
@@ -89,6 +109,9 @@ public class TuShareDailyHandler implements DailyHandler {
             stockDaily.setChangeRange(new BigDecimal(d.getChange()));
             stockDaily.setTradeVolume(new BigDecimal(d.getAmount()));
             stockDaily.setAmount(new BigDecimal(d.getAmount()));
+            stockDaily.setCirculateMarketValue(MathUtil.stringToBigdecimalDivide(dailyBasicMap.get(d.getTs_code()).getCirc_mv(), 10000));
+            stockDaily.setTurnoverRate(MathUtil.stringToBigdecimal(dailyBasicMap.get(d.getTs_code()).getTurnover_rate()));
+            stockDaily.setVolumnRation(MathUtil.stringToBigdecimal(dailyBasicMap.get(d.getTs_code()).getVolume_ratio()));
             return stockDaily;
         }).collect(Collectors.toList());
 

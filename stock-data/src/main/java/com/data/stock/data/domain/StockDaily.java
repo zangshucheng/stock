@@ -28,9 +28,9 @@ public class StockDaily implements Serializable {
     private String stockCode;
 
     /**
-     * 股票代码
+     * 
      */
-    @TableField(value = "stock_Name")
+    @TableField(value = "stock_name")
     private String stockName;
 
     /**
@@ -70,16 +70,34 @@ public class StockDaily implements Serializable {
     private BigDecimal preClose;
 
     /**
+     * 价格变动百分比
+     */
+    @TableField(value = "pct_chg")
+    private BigDecimal pctChg;
+
+    /**
+     * 换手率
+     */
+    @TableField(value = "turnover_rate")
+    private BigDecimal turnoverRate;
+
+    /**
      * 价格变动幅度
      */
     @TableField(value = "change_range")
     private BigDecimal changeRange;
 
     /**
-     * 价格变动百分比
+     * 流通市值，单位：亿
      */
-    @TableField(value = "pct_chg")
-    private BigDecimal pctChg;
+    @TableField(value = "circulate_market_value")
+    private BigDecimal circulateMarketValue;
+
+    /**
+     * 量比
+     */
+    @TableField(value = "volumn_ration")
+    private BigDecimal volumnRation;
 
     /**
      * 成交总手数

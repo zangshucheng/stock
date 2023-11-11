@@ -1,6 +1,7 @@
 package com.data.stock.common.utils;
 
 import com.data.stock.common.constant.MagicNumberConstants;
+import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
 
@@ -39,5 +40,19 @@ public final class MathUtil {
         BigDecimal downLimit = previousPrice.multiply(BigDecimal.ONE.subtract(stockGrowth)).setScale(2, BigDecimal.ROUND_HALF_UP);
 
         return stockPrice.compareTo(downLimit) == 0;
+    }
+
+    public static BigDecimal stringToBigdecimal(String v){
+        if(StringUtils.isEmpty(v)){
+            return null;
+        }
+        return new BigDecimal(v);
+    }
+
+    public static BigDecimal stringToBigdecimalDivide(String v, int divide){
+        if(StringUtils.isEmpty(v)){
+            return null;
+        }
+        return new BigDecimal(v).divide(new BigDecimal(divide), 2, BigDecimal.ROUND_HALF_UP);
     }
 }

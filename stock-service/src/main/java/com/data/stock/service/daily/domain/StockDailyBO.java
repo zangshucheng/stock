@@ -1,5 +1,6 @@
 package com.data.stock.service.daily.domain;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -65,4 +66,20 @@ public class StockDailyBO {
      * 成交总额
      */
     private BigDecimal amount;
+
+    /**
+     * 换手率
+     */
+    private BigDecimal turnoverRate;
+
+    /**
+     * 流通市值，单位：亿
+     */
+    private BigDecimal circulateMarketValue;
+
+    /**
+     * 量比
+     */
+    private BigDecimal volumnRation;
+
 }
