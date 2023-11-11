@@ -6,21 +6,34 @@
 
     <resultMap id="BaseResultMap" type="com.data.stock.data.domain.StockLimitAnalysis">
             <id property="id" column="id" jdbcType="BIGINT"/>
-            <result property="stockName" column="stock_name" jdbcType="VARCHAR"/>
             <result property="stockCode" column="stock_code" jdbcType="VARCHAR"/>
+            <result property="stockName" column="stock_name" jdbcType="VARCHAR"/>
             <result property="tradeDate" column="trade_date" jdbcType="INTEGER"/>
             <result property="hypeSubject" column="hype_subject" jdbcType="VARCHAR"/>
-            <result property="price" column="price" jdbcType="DECIMAL"/>
-            <result property="limitType" column="limit_type" jdbcType="VARCHAR"/>
-            <result property="rangePercent" column="range_percent" jdbcType="DECIMAL"/>
+            <result property="close" column="close" jdbcType="DECIMAL"/>
+            <result property="pctChange" column="pct_change" jdbcType="DECIMAL"/>
             <result property="turnoverRate" column="turnover_rate" jdbcType="DECIMAL"/>
             <result property="circulateMarketValue" column="circulate_market_value" jdbcType="DECIMAL"/>
+            <result property="volatility" column="volatility" jdbcType="DECIMAL"/>
+            <result property="amount" column="amount" jdbcType="DECIMAL"/>
+            <result property="limitAmount" column="limit_amount" jdbcType="DECIMAL"/>
+            <result property="firstTime" column="first_time" jdbcType="VARCHAR"/>
+            <result property="lastTime" column="last_time" jdbcType="VARCHAR"/>
+            <result property="openTimes" column="open_times" jdbcType="INTEGER"/>
+            <result property="upStatistics" column="up_statistics" jdbcType="VARCHAR"/>
+            <result property="limitTimes" column="limit_times" jdbcType="INTEGER"/>
+            <result property="limitType" column="limit_type" jdbcType="VARCHAR"/>
+            <result property="industry" column="industry" jdbcType="VARCHAR"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id,stock_name,stock_code,
-        trade_date,hype_subject,price,limit_type,range_percent,
-        turnover_rate,circulate_market_value
+        id,stock_code,stock_name,
+        trade_date,hype_subject,close,
+        pct_change,turnover_rate,circulate_market_value,
+        volatility,amount,limit_amount,
+        first_time,last_time,open_times,
+        up_statistics,limit_times,limit_type,
+        industry
     </sql>
     <delete id="deletebyTradeDate">
         delete from stock_limit_analysis where trade_date = #{tradeDate};

@@ -93,8 +93,8 @@ public class DailyServiceImpl implements DailyService {
                 stockLimitAnalysis.setLimitType(limitType);
                 stockLimitAnalysis.setStockName(stock.getStockName());
                 stockLimitAnalysis.setTradeDate(stock.getTradeDate());
-                stockLimitAnalysis.setPrice(stock.getClose());
-                stockLimitAnalysis.setRangePercent(stock.getPctChange());
+                stockLimitAnalysis.setClose(stock.getClose());
+                stockLimitAnalysis.setPctChange(stock.getPctChange());
                 stockLimitAnalysis.setCirculateMarketValue(stock.getCirculateMarketValue());
                 stockLimitAnalysis.setTurnoverRate(stock.getTurnoverRate());
                 limitAnalyses.add(stockLimitAnalysis);

@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 /**
 * @author zangshucheng
 * @description 针对表【stock_limit_analysis(股票涨跌分析)】的数据库操作Mapper
-* @createDate 2023-11-11 12:59:51
+* @createDate 2023-11-11 21:57:51
 * @Entity com.data.stock.data.domain.StockLimitAnalysis
 */
 public interface StockLimitAnalysisMapper extends BaseMapper<StockLimitAnalysis> {
