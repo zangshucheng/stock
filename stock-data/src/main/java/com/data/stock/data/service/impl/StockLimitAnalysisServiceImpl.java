@@ -6,6 +6,8 @@ import com.data.stock.data.service.StockLimitAnalysisService;
 import com.data.stock.data.mapper.StockLimitAnalysisMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
 * @author zangshucheng
 * @description 针对表【stock_limit_analysis(股票涨跌分析)】的数据库操作Service实现
@@ -18,6 +20,11 @@ public class StockLimitAnalysisServiceImpl extends ServiceImpl<StockLimitAnalysi
     @Override
     public void deletebyTradeDate(String tradeDate) {
         this.baseMapper.deletebyTradeDate(tradeDate);
+    }
+
+    @Override
+    public void insertIgnore(List<StockLimitAnalysis> stockLimitAnalysisList) {
+        this.baseMapper.insertIgnore(stockLimitAnalysisList);
     }
 }
 

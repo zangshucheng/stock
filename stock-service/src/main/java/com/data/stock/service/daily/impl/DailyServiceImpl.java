@@ -103,8 +103,7 @@ public class DailyServiceImpl implements DailyService {
 
         if(!CollectionUtils.isEmpty(limitAnalyses)){
             //删除当前数据
-            limitAnalysisService.deletebyTradeDate(tradeDate);
-            limitAnalysisService.saveBatch(limitAnalyses);
+            limitAnalysisService.insertIgnore(limitAnalyses);
         }
     }
 }

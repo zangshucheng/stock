@@ -35,6 +35,19 @@
         up_statistics,limit_times,limit_type,
         industry
     </sql>
+
+    <insert id="insertIgnore" parameterType="com.data.stock.data.domain.StockLimitAnalysis">
+        insert ignore stock_limit_analysis(stock_code, stock_name, trade_date, close, pct_change, turnover_rate,
+        circulate_market_value, limit_type)
+        values
+        <foreach collection="stockLimitAnalysisList" index="index" item="stockLimitAnalysis" separator=",">
+            (
+            #{stockLimitAnalysis.stockCode},#{stockLimitAnalysis.stockName},#{stockLimitAnalysis.tradeDate},#{stockLimitAnalysis.close},
+            #{stockLimitAnalysis.pctChange},#{stockLimitAnalysis.turnoverRate},#{stockLimitAnalysis.circulateMarketValue},#{stockLimitAnalysis.limitType}
+            )
+        </foreach>
+    </insert>
+
     <delete id="deletebyTradeDate">
         delete from stock_limit_analysis where trade_date = #{tradeDate};
     </delete>
