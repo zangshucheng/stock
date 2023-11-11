@@ -32,6 +32,6 @@ public class BaseStockServiceImpl implements BaseStockService {
         }
 
         List<StockBase> stockBases = stockBasicBOS.stream().map(StockBasicBO::buildStockBase).collect(Collectors.toList());
-        baseService.saveOrUpdateBatch(stockBases);
+        baseService.replaceInto(stockBases);
     }
 }

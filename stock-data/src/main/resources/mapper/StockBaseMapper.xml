@@ -4,13 +4,36 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.data.stock.data.mapper.StockBaseMapper">
 
-    <insert id="replaceInto">
+    <resultMap id="BaseResultMap" type="com.data.stock.data.domain.StockBase">
+            <id property="stockCode" column="stock_code" jdbcType="VARCHAR"/>
+            <result property="tsCode" column="ts_code" jdbcType="VARCHAR"/>
+            <result property="stockName" column="stock_name" jdbcType="VARCHAR"/>
+            <result property="area" column="area" jdbcType="VARCHAR"/>
+            <result property="industry" column="industry" jdbcType="VARCHAR"/>
+            <result property="fullName" column="full_name" jdbcType="VARCHAR"/>
+            <result property="enName" column="en_name" jdbcType="VARCHAR"/>
+            <result property="cnSpell" column="cn_spell" jdbcType="VARCHAR"/>
+            <result property="market" column="market" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="VARCHAR"/>
+            <result property="isHs" column="is_hs" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        stock_code,ts_code,stock_name,
+        area,industry,full_name,
+        en_name,cn_spell,market,
+        status,is_hs
+    </sql>
+
+    <insert id="replaceInto" parameterType="com.data.stock.data.domain.StockBase">
         replace into stock_base(ts_code, stock_name, stock_code, area, industry, full_name, en_name, cn_spell, market,
         status, is_hs)
         values
-        <foreach collection="stockBaseList" index="index" item="stockBase" separator="," open="(" close=")">
-            #{stockBase.tsCode),#{stockBase.stockName},#{stockBase.stockCode},#{stockBase.area},#{stockBase.industry},#{stockBase.fullName},
-            #{stockBase.enName},#{stockBase.cnSpell},#{stockBase.market},#{stockBase.status},#{stockBase.isHs}
+        <foreach collection="stockBaseList" index="index" item="stockBase" separator=",">
+            (
+            #{stockBase.tsCode},#{stockBase.stockName},#{stockBase.stockCode},#{stockBase.area},#{stockBase.industry},
+            #{stockBase.fullName},#{stockBase.enName},#{stockBase.cnSpell},#{stockBase.market},#{stockBase.status},#{stockBase.isHs}
+            )
         </foreach>
     </insert>
 </mapper>
