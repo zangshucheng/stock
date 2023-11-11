@@ -14,7 +14,7 @@
             <result property="low" column="low" jdbcType="DECIMAL"/>
             <result property="close" column="close" jdbcType="DECIMAL"/>
             <result property="preClose" column="pre_close" jdbcType="DECIMAL"/>
-            <result property="pctChg" column="pct_chg" jdbcType="DECIMAL"/>
+            <result property="pctChange" column="pct_change" jdbcType="DECIMAL"/>
             <result property="turnoverRate" column="turnover_rate" jdbcType="DECIMAL"/>
             <result property="changeRange" column="change_range" jdbcType="DECIMAL"/>
             <result property="circulateMarketValue" column="circulate_market_value" jdbcType="DECIMAL"/>
@@ -27,7 +27,7 @@
         id,stock_code,stock_name,
         trade_date,open,high,
         low,close,pre_close,
-        pct_chg,turnover_rate,change_range,
+        pct_change,turnover_rate,change_range,
         circulate_market_value,volumn_ration,trade_volume,
         amount
     </sql>

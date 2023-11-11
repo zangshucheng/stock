@@ -57,7 +57,7 @@ public class DailyServiceImpl implements DailyService {
             stockDaily.setLow(d.getLow());
             stockDaily.setClose(d.getClose());
             stockDaily.setPreClose(d.getPreClose());
-            stockDaily.setPctChg(d.getPctChg());
+            stockDaily.setPctChange(d.getPctChg());
             stockDaily.setTradeVolume(d.getTradeVolume());
             stockDaily.setChangeRange(d.getChangeRange());
             stockDaily.setAmount(d.getAmount());
@@ -94,7 +94,7 @@ public class DailyServiceImpl implements DailyService {
                 stockLimitAnalysis.setStockName(stock.getStockName());
                 stockLimitAnalysis.setTradeDate(stock.getTradeDate());
                 stockLimitAnalysis.setPrice(stock.getClose());
-                stockLimitAnalysis.setRangePercent(stock.getPctChg());
+                stockLimitAnalysis.setRangePercent(stock.getPctChange());
                 stockLimitAnalysis.setCirculateMarketValue(stock.getCirculateMarketValue());
                 stockLimitAnalysis.setTurnoverRate(stock.getTurnoverRate());
                 limitAnalyses.add(stockLimitAnalysis);

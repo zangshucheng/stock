@@ -72,8 +72,8 @@ public class StockDaily implements Serializable {
     /**
      * 价格变动百分比
      */
-    @TableField(value = "pct_chg")
-    private BigDecimal pctChg;
+    @TableField(value = "pct_change")
+    private BigDecimal pctChange;
 
     /**
      * 换手率
