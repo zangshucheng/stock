@@ -15,8 +15,12 @@ import java.util.Date;
  */
 public final class DateUtil {
 
-    public static String getDateFormat(){
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+    public static final String YYYYMMDD = "yyyyMMdd";
+
+    public static final String YYYY_MM_DD = "yyyy-MM-dd";
+
+    public static String getDateFormat(String format){
+        SimpleDateFormat dateFormat = new SimpleDateFormat(format);
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(new Date());
         return dateFormat.format(calendar.getTime());
