@@ -1,6 +1,8 @@
 package com.data.stock.openfeign.tushare.domain;
 
+import lombok.Builder;
 import lombok.Data;
+import lombok.experimental.SuperBuilder;
 
 import java.io.Serializable;
 

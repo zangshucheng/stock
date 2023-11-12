@@ -54,6 +54,13 @@ public class TuSahreBasicDataServiceImpl implements TuSahreBasicDataService {
         return tuShareDailyBasicDTO;
     }
 
+    @Override
+    public TuSahreStockBasicPageDTO limitList(TuShareLimitListQueryDTO requestDTO) {
+        TuSahreStockBasicPageDTO<TuShareLimitListDTO> tuShareLimitListDTO =
+                stockCommonPostRequest(TuShareLimitListDTO.class, requestDTO, TuShareURLConstants.LIMIT_LIST_FIELDS, TuShareURLConstants.LIMIT_LIST_D);
+        return tuShareLimitListDTO;
+    }
+
     private <T, C> TuSahreStockBasicPageDTO<T> stockCommonPostRequest(Class t, C c, List<String> showFields, String apiName) {
 
         TuSahreStockBasicRequestDTO request = new TuSahreStockBasicRequestDTO(showFields);

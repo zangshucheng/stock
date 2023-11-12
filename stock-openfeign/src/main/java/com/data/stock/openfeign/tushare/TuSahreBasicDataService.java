@@ -35,4 +35,11 @@ public interface TuSahreBasicDataService {
      * @return
      */
     TuSahreStockBasicPageDTO dailyBasic(TuShareDailyBasicQueryDTO requestDTO);
+
+    /**
+     * 涨跌停列表
+     * @param requestDTO
+     * @return
+     */
+    TuSahreStockBasicPageDTO limitList(TuShareLimitListQueryDTO requestDTO);
 }

@@ -41,6 +41,7 @@ public class DailyServiceImpl implements DailyService {
 
     @Override
     public void dailyMarket(String tradeDate) {
+
         List<StockDailyBO> stockDailys = tuShareDailyHandler.dailyMarket(tradeDate);
 
         if(CollectionUtils.isEmpty(stockDailys)){

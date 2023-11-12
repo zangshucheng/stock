@@ -26,6 +26,11 @@ public final class TuShareURLConstants {
     public static final String DAILY_BASIC = "daily_basic";
 
     /**
+     * 涨跌停列表
+     */
+    public static final String LIMIT_LIST_D = "limit_list_d";
+
+    /**
      * 非交易日
      */
     public static final String TRADE_CLOSE = "1";
@@ -55,4 +60,9 @@ public final class TuShareURLConstants {
      * 每日指标
      */
     public static final List<String> DAILY_BASIC_FIELDS = Arrays.asList("ts_code", "trade_date", "close", "turnover_rate", "turnover_rate_f", "volume_ratio", "pe", "pe_ttm", "pb", "ps", "ps_ttm", "dv_ratio", "dv_ttm", "total_share", "float_share", "free_share", "total_mv", "circ_mv", "limit_status");
+
+    /**
+     * 涨跌停列表
+     */
+    public static final List<String> LIMIT_LIST_FIELDS = Arrays.asList("trade_date","ts_code","industry","name","close","pct_chg","amount","limit_amount","float_mv","total_mv","turnover_ratio","fd_amount","first_time","last_time","open_times","up_stat","limit_times","limit","swing");
 }
