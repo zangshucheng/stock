@@ -12,6 +12,12 @@ public class TuShareLimitListQueryDTO extends TuSahreBasePageDTO implements Seri
     public TuShareLimitListQueryDTO(){
     }
 
+    public TuShareLimitListQueryDTO(int limit, int offset, String trade_date){
+        this.limit = limit;
+        this.offset = offset;
+        this.trade_date = trade_date;
+    }
+
     public TuShareLimitListQueryDTO(int limit, int offset, String start_date, String end_date){
         this.limit = limit;
         this.offset = offset;

@@ -10,6 +10,11 @@ public final class MagicNumberConstants {
     public static final int STOCK_BASIC_LIMIT = 5000;
 
     /**
+     * 每次取数据的条数
+     */
+    public static final int STOCK_DAILY_LIMIT = 500;
+
+    /**
      * 其实查询位置
      */
     public static final int STOCK_BASIC_OFFSET_START = 0;

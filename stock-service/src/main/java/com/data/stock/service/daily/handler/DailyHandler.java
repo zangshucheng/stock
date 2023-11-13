@@ -18,4 +18,10 @@ public interface DailyHandler {
      * @return
      */
     List<StockDailyBO> dailyMarket(String trdaeDate);
+
+    /**
+     * 股票当日涨停/跌停/炸板
+     * @return
+     */
+    List<StockDailyBO> dailyLimitList(String trdaeDate);
 }

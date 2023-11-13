@@ -1,9 +1,5 @@
 package com.data.stock.service.daily;
 
-import com.data.stock.service.daily.domain.StockDailyBO;
-
-import java.util.List;
-
 public interface DailyService {
 
     /**
@@ -11,4 +7,10 @@ public interface DailyService {
      * @return
      */
     void dailyMarket(String trdaeDate);
+
+    /**
+     * 股票当日涨停/跌停/炸板
+     * @return
+     */
+    void dailyLimitList(String trdaeDate);
 }

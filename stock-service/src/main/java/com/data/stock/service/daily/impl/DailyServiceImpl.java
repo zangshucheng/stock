@@ -107,4 +107,9 @@ public class DailyServiceImpl implements DailyService {
             limitAnalysisService.insertIgnore(limitAnalyses);
         }
     }
+
+    @Override
+    public void dailyLimitList(String trdaeDate) {
+
+    }
 }

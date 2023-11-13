@@ -117,4 +117,36 @@ public class TuShareDailyHandler implements DailyHandler {
 
         return stockDailyList;
     }
+
+    @Override
+    public List<StockDailyBO> dailyLimitList(String trdaeDate) {
+        //非交易日不去拉取数据
+        if (!tradeCalendar(trdaeDate)) {
+            log.warn("当前不是交易日，日期：{}", trdaeDate);
+            return null;
+        }
+
+        List<TuShareLimitListDTO> tuShareLimitListDTOList = new ArrayList<>();
+
+        int offset = MagicNumberConstants.STOCK_DAILY_LIMIT;
+        TuSahreStockBasicPageDTO<TuShareLimitListDTO> tuSahreLimitListPageDTO = null;
+        do {
+            //取数据
+            tuSahreLimitListPageDTO = tuSahreBasicDataService.limitList(new TuShareLimitListQueryDTO(MagicNumberConstants.STOCK_DAILY_LIMIT, offset, trdaeDate));
+
+            if (Objects.isNull(tuSahreLimitListPageDTO) || CollectionUtils.isEmpty(tuSahreLimitListPageDTO.getTuShareStockBasics())) {
+                break;
+            }
+            tuShareLimitListDTOList.addAll(tuSahreLimitListPageDTO.getTuShareStockBasics());
+            offset += MagicNumberConstants.STOCK_BASIC_LIMIT;
+        } while (!Objects.isNull(tuSahreLimitListPageDTO) && tuSahreLimitListPageDTO.isHas_more());
+
+        if (CollectionUtils.isEmpty(tuShareLimitListDTOList)) {
+            log.warn("未取到股票日行情信息");
+            return null;
+        }
+
+
+
+    }
 }
