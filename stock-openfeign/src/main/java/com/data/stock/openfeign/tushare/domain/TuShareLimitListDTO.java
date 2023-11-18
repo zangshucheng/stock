@@ -1,5 +1,6 @@
 package com.data.stock.openfeign.tushare.domain;
 
+import com.data.stock.common.constant.StringConstants;
 import lombok.Data;
 
 @Data
@@ -45,7 +46,7 @@ public class TuShareLimitListDTO {
     private String limit_amount;
 
     /**
-     * 	流通市值
+     * 流通市值
      */
     private String float_mv;
 
@@ -65,7 +66,7 @@ public class TuShareLimitListDTO {
     private String fd_amount;
 
     /**
-     * 	首次封板时间（跌停无此数据）
+     * 首次封板时间（跌停无此数据）
      */
     private String first_time;
 
@@ -98,4 +99,14 @@ public class TuShareLimitListDTO {
      * 振幅
      */
     private String swing;
+
+    public String getLimitType() {
+        if ("D".equalsIgnoreCase(this.limit)) {
+            return StringConstants.LIMIT_TYPE_DOWN;
+        } else if ("U".equalsIgnoreCase(this.limit)) {
+            return StringConstants.LIMIT_TYPE_UP;
+        } else {
+            return StringConstants.LIMIT_TYPE_BOM;
+        }
+    }
 }

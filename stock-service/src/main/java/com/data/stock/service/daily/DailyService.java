@@ -12,5 +12,5 @@ public interface DailyService {
      * 股票当日涨停/跌停/炸板
      * @return
      */
-    void dailyLimitList(String trdaeDate);
+    void dailyLimitList(String tradeDate);
 }

@@ -1,6 +1,7 @@
 package com.data.stock.service.daily.handler;
 
 import com.data.stock.service.daily.domain.StockDailyBO;
+import com.data.stock.service.daily.domain.StockLimitBO;
 
 import java.util.List;
 
@@ -23,5 +24,5 @@ public interface DailyHandler {
      * 股票当日涨停/跌停/炸板
      * @return
      */
-    List<StockDailyBO> dailyLimitList(String trdaeDate);
+    List<StockLimitBO> dailyLimitList(String trdaeDate);
 }

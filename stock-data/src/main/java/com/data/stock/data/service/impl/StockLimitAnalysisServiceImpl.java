@@ -26,6 +26,11 @@ public class StockLimitAnalysisServiceImpl extends ServiceImpl<StockLimitAnalysi
     public void insertIgnore(List<StockLimitAnalysis> stockLimitAnalysisList) {
         this.baseMapper.insertIgnore(stockLimitAnalysisList);
     }
+
+    @Override
+    public void insertReplace(List<StockLimitAnalysis> stockLimitAnalysisList) {
+        this.baseMapper.insertReplace(stockLimitAnalysisList);
+    }
 }
 
 

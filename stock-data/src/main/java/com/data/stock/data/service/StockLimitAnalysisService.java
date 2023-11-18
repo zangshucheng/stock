@@ -20,4 +20,10 @@ public interface StockLimitAnalysisService extends IService<StockLimitAnalysis> 
      * @param stockLimitAnalysisList
      */
     void insertIgnore(List<StockLimitAnalysis> stockLimitAnalysisList);
+
+    /**
+     * 插入数据
+     * @param stockLimitAnalysisList
+     */
+    void insertReplace(List<StockLimitAnalysis> stockLimitAnalysisList);
 }

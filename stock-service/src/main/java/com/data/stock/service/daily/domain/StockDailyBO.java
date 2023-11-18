@@ -1,12 +1,14 @@
 package com.data.stock.service.daily.domain;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.data.stock.openfeign.tushare.domain.TuShareLimitListDTO;
 import lombok.Data;
 
 import java.math.BigDecimal;
 
 @Data
 public class StockDailyBO {
+
     /**
      * 股票代码
      */
@@ -81,5 +83,4 @@ public class StockDailyBO {
      * 量比
      */
     private BigDecimal volumnRation;
-
 }

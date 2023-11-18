@@ -13,6 +13,7 @@ import com.data.stock.openfeign.tushare.domain.TuSahreStockBasicPageDTO;
 import com.data.stock.openfeign.tushare.domain.TuSahreStockDailyDTO;
 import com.data.stock.service.daily.DailyService;
 import com.data.stock.service.daily.domain.StockDailyBO;
+import com.data.stock.service.daily.domain.StockLimitBO;
 import com.data.stock.service.daily.handler.DailyHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,6 @@ public class DailyServiceImpl implements DailyService {
 
     @Override
     public void dailyMarket(String tradeDate) {
-
         List<StockDailyBO> stockDailys = tuShareDailyHandler.dailyMarket(tradeDate);
 
         if(CollectionUtils.isEmpty(stockDailys)){
@@ -109,7 +109,36 @@ public class DailyServiceImpl implements DailyService {
     }
 
     @Override
-    public void dailyLimitList(String trdaeDate) {
+    public void dailyLimitList(String tradeDate) {
+        List<StockLimitBO> stockLimitBOList = tuShareDailyHandler.dailyLimitList(tradeDate);
+        if(CollectionUtils.isEmpty(stockLimitBOList)){
+            log.warn("未获取到当日涨跌停数据，日期：{}", tradeDate);
+            return;
+        }
+        List<StockLimitAnalysis> limitAnalyses = new ArrayList<>();
+        stockLimitBOList.forEach(limit ->{
+            StockLimitAnalysis stockLimitAnalysis = new StockLimitAnalysis();
+            stockLimitAnalysis.setStockCode(limit.getStockCode());
+            stockLimitAnalysis.setStockName(limit.getStockName());
+            stockLimitAnalysis.setTradeDate(limit.getTradeDate());
+//            stockLimitAnalysis.setHypeSubject();
+            stockLimitAnalysis.setClose(limit.getClose());
+            stockLimitAnalysis.setPctChange(limit.getPctChange());
+            stockLimitAnalysis.setTurnoverRate(limit.getTurnoverRate());
+            stockLimitAnalysis.setCirculateMarketValue(limit.getCirculateMarketValue());
+            stockLimitAnalysis.setVolatility(limit.getVolatility());
+            stockLimitAnalysis.setAmount(limit.getAmount());
+            stockLimitAnalysis.setLimitAmount(limit.getLimitAmount());
+            stockLimitAnalysis.setFirstTime(limit.getFirstTime());
+            stockLimitAnalysis.setLastTime(limit.getLastTime());
+            stockLimitAnalysis.setOpenTimes(limit.getOpenTimes());
+            stockLimitAnalysis.setUpStatistics(limit.getUpStatistics());
+            stockLimitAnalysis.setLimitTimes(limit.getLimitTimes());
+            stockLimitAnalysis.setLimitType(limit.getLimitType());
+            stockLimitAnalysis.setIndustry(limit.getIndustry());
+            limitAnalyses.add(stockLimitAnalysis);
+        });
 
+        limitAnalysisService.insertReplace(limitAnalyses);
     }
 }

@@ -26,6 +26,12 @@ public class Testcontroller {
         log.warn("ss");
     }
 
+    @GetMapping("/dailyLimit")
+    public void testDailyLimit(String tradeDate){
+        dailyService.dailyLimitList(tradeDate);
+        log.warn("ss");
+    }
+
     @GetMapping("/base")
     public void testBase(){
         baseStockService.stockBase();

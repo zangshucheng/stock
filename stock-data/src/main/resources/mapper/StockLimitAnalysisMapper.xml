@@ -47,6 +47,19 @@
             )
         </foreach>
     </insert>
+    <insert id="insertReplace">
+        replace into stock_limit_analysis(stock_code,stock_name,trade_date,hype_subject,close,pct_change,turnover_rate,circulate_market_value,
+        volatility,amount,limit_amount,first_time,last_time,open_times,up_statistics,limit_times,limit_type,industry)
+        values
+        <foreach collection="stockLimitAnalysisList" index="index" item="stockLimitAnalysis" separator=",">
+            (
+            #{stockLimitAnalysis.stockCode},#{stockLimitAnalysis.stockName},#{stockLimitAnalysis.tradeDate},#{stockLimitAnalysis.hypeSubject},#{stockLimitAnalysis.close},
+            #{stockLimitAnalysis.pctChange},#{stockLimitAnalysis.turnoverRate},#{stockLimitAnalysis.circulateMarketValue},#{stockLimitAnalysis.volatility},
+            #{stockLimitAnalysis.amount},#{stockLimitAnalysis.limitAmount},#{stockLimitAnalysis.firstTime},#{stockLimitAnalysis.lastTime},#{stockLimitAnalysis.openTimes},
+            #{stockLimitAnalysis.upStatistics},#{stockLimitAnalysis.limitTimes},#{stockLimitAnalysis.limitType},#{stockLimitAnalysis.industry}
+            )
+        </foreach>
+    </insert>
 
     <delete id="deletebyTradeDate">
         delete from stock_limit_analysis where trade_date = #{tradeDate};

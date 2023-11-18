@@ -49,6 +49,13 @@ public final class MathUtil {
         return new BigDecimal(v);
     }
 
+    public static Integer stringToInteger(String v){
+        if(StringUtils.isEmpty(v)){
+            return null;
+        }
+        return Integer.parseInt(v);
+    }
+
     public static BigDecimal stringToBigdecimalDivide(String v, int divide){
         if(StringUtils.isEmpty(v)){
             return null;

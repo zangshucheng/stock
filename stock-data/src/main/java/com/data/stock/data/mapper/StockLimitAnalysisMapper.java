@@ -25,6 +25,12 @@ public interface StockLimitAnalysisMapper extends BaseMapper<StockLimitAnalysis>
      * @param stockLimitAnalysisList
      */
     void insertIgnore(@Param("stockLimitAnalysisList") List<StockLimitAnalysis> stockLimitAnalysisList);
+
+    /**
+     * 插入数据
+     * @param stockLimitAnalysisList
+     */
+    void insertReplace(@Param("stockLimitAnalysisList") List<StockLimitAnalysis> stockLimitAnalysisList);
 }
 
 
