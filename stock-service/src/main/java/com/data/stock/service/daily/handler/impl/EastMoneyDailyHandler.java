@@ -3,11 +3,13 @@ package com.data.stock.service.daily.handler.impl;
 import com.data.stock.common.utils.MathUtil;
 import com.data.stock.openfeign.eastmoney.EastMoneyStockBaseService;
 import com.data.stock.openfeign.eastmoney.domain.EastLatestStockDTO;
+import com.data.stock.openfeign.eastmoney.domain.EastZTPoolDTO;
 import com.data.stock.service.daily.domain.StockDailyBO;
 import com.data.stock.service.daily.domain.StockLimitBO;
 import com.data.stock.service.daily.handler.DailyHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -54,8 +56,10 @@ public class EastMoneyDailyHandler implements DailyHandler {
 
     @Override
     public List<StockLimitBO> dailyLimitList(String trdaeDate) {
+        List<EastZTPoolDTO.ZTPoolDTO> topicZTPool = eastMoneyStockBaseService.getTopicZTPool(trdaeDate);
+        if(!CollectionUtils.isEmpty(topicZTPool)){
 
-
+        }
 
 
         return null;
