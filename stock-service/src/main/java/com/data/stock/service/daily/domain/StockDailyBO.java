@@ -62,7 +62,7 @@ public class StockDailyBO {
     /**
      * 涨跌幅
      */
-    private BigDecimal ration;
+    private BigDecimal pctChange;
 
     /**
      * 成交总手数

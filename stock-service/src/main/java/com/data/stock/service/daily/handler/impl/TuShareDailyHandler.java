@@ -106,7 +106,7 @@ public class TuShareDailyHandler implements DailyHandler {
             stockDaily.setLow(new BigDecimal(d.getLow()));
             stockDaily.setClose(new BigDecimal(d.getClose()));
             stockDaily.setPreClose(new BigDecimal(d.getPre_close()));
-            stockDaily.setRation(new BigDecimal(d.getPct_chg()));
+            stockDaily.setPctChange(new BigDecimal(d.getPct_chg()));
             stockDaily.setChangeRange(new BigDecimal(d.getChange()));
             stockDaily.setTradeVolume(new BigDecimal(d.getAmount()));
             stockDaily.setAmount(new BigDecimal(d.getAmount()));

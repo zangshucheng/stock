@@ -33,7 +33,7 @@ public class EastMoneyDailyHandler implements DailyHandler {
             stockDailyBO.setStockCode(s.getF12());
             stockDailyBO.setStockName(s.getF14());
             stockDailyBO.setClose(MathUtil.stringToBigdecimal(s.getF2()));
-            stockDailyBO.setRation(MathUtil.stringToBigdecimal(s.getF3()));
+            stockDailyBO.setPctChange(MathUtil.stringToBigdecimal(s.getF3()));
             stockDailyBO.setChangeRange(MathUtil.stringToBigdecimal(s.getF4()));
             stockDailyBO.setTradeVolume(MathUtil.stringToBigdecimal(s.getF5()));
             stockDailyBO.setAmount(MathUtil.stringToBigdecimal(s.getF6()));

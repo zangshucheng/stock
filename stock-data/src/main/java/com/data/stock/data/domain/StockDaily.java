@@ -72,8 +72,8 @@ public class StockDaily implements Serializable {
     /**
      * 涨跌幅
      */
-    @TableField(value = "ration")
-    private BigDecimal ration;
+    @TableField(value = "pct_change")
+    private BigDecimal pctChange;
 
     /**
      * 振幅

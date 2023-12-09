@@ -53,7 +53,7 @@ public class DailyServiceImpl implements DailyService {
             stockDaily.setClose(d.getClose());
             stockDaily.setPreClose(d.getPreClose());
             stockDaily.setAmplitudeRatio(d.getAmplitudeRatio());
-            stockDaily.setRation(d.getRation());
+            stockDaily.setPctChange(d.getPctChange());
             stockDaily.setTradeVolume(d.getTradeVolume());
             stockDaily.setChangeRange(d.getChangeRange());
             stockDaily.setAmount(d.getAmount());
