@@ -24,7 +24,8 @@ public class EastMoneyDailyHandler implements DailyHandler {
     }
 
     @Override
-    public List<StockDailyBO> dailyMarket(String trdaeDate) {
+    public List<StockDailyBO> dailyMarket(String tradeDate) {
+
         List<EastLatestStockDTO> latestAllStockInfo = eastMoneyStockBaseService.getLatestAllStockInfo();
 
         List<StockDailyBO> stockDailyBOS = latestAllStockInfo.stream().map(s -> {
@@ -44,7 +45,7 @@ public class EastMoneyDailyHandler implements DailyHandler {
             stockDailyBO.setVolumnRation(MathUtil.stringToBigdecimal(s.getF10()));
             stockDailyBO.setTurnoverRate(MathUtil.stringToBigdecimal(s.getF8()));
             stockDailyBO.setCirculateMarketValue(MathUtil.stringToBigdecimal(s.getF21()));
-            stockDailyBO.setTradeDate(trdaeDate);
+            stockDailyBO.setTradeDate(tradeDate);
             return stockDailyBO;
         }).collect(Collectors.toList());
 
@@ -53,6 +54,10 @@ public class EastMoneyDailyHandler implements DailyHandler {
 
     @Override
     public List<StockLimitBO> dailyLimitList(String trdaeDate) {
+
+
+
+
         return null;
     }
 }
