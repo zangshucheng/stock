@@ -25,4 +25,11 @@ public final class DateUtil {
         calendar.setTime(new Date());
         return dateFormat.format(calendar.getTime());
     }
+
+    public static String getDateFormatYYYYMMDD(){
+        SimpleDateFormat dateFormat = new SimpleDateFormat(YYYYMMDD);
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        return dateFormat.format(calendar.getTime());
+    }
 }

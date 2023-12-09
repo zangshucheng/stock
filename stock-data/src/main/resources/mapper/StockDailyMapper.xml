@@ -14,22 +14,26 @@
             <result property="low" column="low" jdbcType="DECIMAL"/>
             <result property="close" column="close" jdbcType="DECIMAL"/>
             <result property="preClose" column="pre_close" jdbcType="DECIMAL"/>
-            <result property="pctChange" column="pct_change" jdbcType="DECIMAL"/>
-            <result property="turnoverRate" column="turnover_rate" jdbcType="DECIMAL"/>
+            <result property="ration" column="ration" jdbcType="DECIMAL"/>
+            <result property="amplitudeRatio" column="amplitude_ratio" jdbcType="DECIMAL"/>
+            <result property="turnoverRatio" column="turnover_ratio" jdbcType="DECIMAL"/>
             <result property="changeRange" column="change_range" jdbcType="DECIMAL"/>
             <result property="circulateMarketValue" column="circulate_market_value" jdbcType="DECIMAL"/>
             <result property="volumnRation" column="volumn_ration" jdbcType="DECIMAL"/>
             <result property="tradeVolume" column="trade_volume" jdbcType="DECIMAL"/>
             <result property="amount" column="amount" jdbcType="DECIMAL"/>
+            <result property="peRation" column="pe_ration" jdbcType="DECIMAL"/>
+            <result property="pbRation" column="pb_ration" jdbcType="DECIMAL"/>
     </resultMap>
 
     <sql id="Base_Column_List">
         id,stock_code,stock_name,
         trade_date,open,high,
         low,close,pre_close,
-        pct_change,turnover_rate,change_range,
-        circulate_market_value,volumn_ration,trade_volume,
-        amount
+        ration,amplitude_ratio,turnover_ratio,
+        change_range,circulate_market_value,volumn_ration,
+        trade_volume,amount,pe_ration,
+        pb_ration
     </sql>
 
     <delete id="deletebyTradeDate">

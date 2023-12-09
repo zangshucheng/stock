@@ -50,14 +50,19 @@ public class StockDailyBO {
     private BigDecimal preClose;
 
     /**
-     * 价格变动幅度
+     * 涨跌额
      */
     private BigDecimal changeRange;
 
     /**
-     * 价格变动百分比
+     * 振幅
      */
-    private BigDecimal pctChg;
+    private BigDecimal amplitudeRatio;
+
+    /**
+     * 涨跌幅
+     */
+    private BigDecimal ration;
 
     /**
      * 成交总手数

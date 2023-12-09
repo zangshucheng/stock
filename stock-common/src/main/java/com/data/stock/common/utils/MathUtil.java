@@ -43,23 +43,30 @@ public final class MathUtil {
     }
 
     public static BigDecimal stringToBigdecimal(String v){
-        if(StringUtils.isEmpty(v)){
+        if(StringUtils.isEmpty(v) || "-".equals(v)){
             return null;
         }
         return new BigDecimal(v);
     }
 
     public static Integer stringToInteger(String v){
-        if(StringUtils.isEmpty(v)){
+        if(StringUtils.isEmpty(v) || "-".equals(v)){
             return null;
         }
         return Integer.parseInt(v);
     }
 
     public static BigDecimal stringToBigdecimalDivide(String v, int divide){
-        if(StringUtils.isEmpty(v)){
+        if(StringUtils.isEmpty(v) || "-".equals(v)){
             return null;
         }
         return new BigDecimal(v).divide(new BigDecimal(divide), 2, BigDecimal.ROUND_HALF_UP);
+    }
+
+    public static BigDecimal stringToBigdecimalDivide100(String v){
+        if(StringUtils.isEmpty(v) || "-".equals(v)){
+            return null;
+        }
+        return new BigDecimal(v).divide(new BigDecimal(100), 2, BigDecimal.ROUND_HALF_UP);
     }
 }

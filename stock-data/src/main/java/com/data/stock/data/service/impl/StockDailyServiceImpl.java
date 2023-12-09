@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 /**
 * @author zangshucheng
 * @description 针对表【stock_daily】的数据库操作Service实现
-* @createDate 2023-11-07 21:53:55
+* @createDate 2023-11-25 13:04:29
 */
 @Service
 public class StockDailyServiceImpl extends ServiceImpl<StockDailyMapper, StockDaily>

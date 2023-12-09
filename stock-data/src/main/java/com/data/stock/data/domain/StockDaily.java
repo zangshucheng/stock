@@ -70,16 +70,22 @@ public class StockDaily implements Serializable {
     private BigDecimal preClose;
 
     /**
-     * 价格变动百分比
+     * 涨跌幅
      */
-    @TableField(value = "pct_change")
-    private BigDecimal pctChange;
+    @TableField(value = "ration")
+    private BigDecimal ration;
+
+    /**
+     * 振幅
+     */
+    @TableField(value = "amplitude_ratio")
+    private BigDecimal amplitudeRatio;
 
     /**
      * 换手率
      */
-    @TableField(value = "turnover_rate")
-    private BigDecimal turnoverRate;
+    @TableField(value = "turnover_ratio")
+    private BigDecimal turnoverRatio;
 
     /**
      * 价格变动幅度
@@ -100,16 +106,28 @@ public class StockDaily implements Serializable {
     private BigDecimal volumnRation;
 
     /**
-     * 成交总手数
+     * 成交总手数，单位：万
      */
     @TableField(value = "trade_volume")
     private BigDecimal tradeVolume;
 
     /**
-     * 成交总额
+     * 成交总额,单位：亿
      */
     @TableField(value = "amount")
     private BigDecimal amount;
+
+    /**
+     * 市盈率
+     */
+    @TableField(value = "pe_ration")
+    private BigDecimal peRation;
+
+    /**
+     * 市静率
+     */
+    @TableField(value = "pb_ration")
+    private BigDecimal pbRation;
 
     @TableField(exist = false)
     private static final long serialVersionUID = 1L;
